@@ -1,0 +1,54 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Data Sources Disclosed",
+      "description": "Indicates that the data sources for this visualization are known and listed.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Source"],
+      "link": ""
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "Methodology Verified",
+      "description": "The methodology used in this visualization has been verified by experts.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Methodology"],
+      "link": ""
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Peer Reviewed",
+      "description": "This visualization has undergone peer review.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Review"],
+      "link": ""
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Interactive Features",
+      "description": "This visualization includes interactive features for exploration.",
+      "type": "INTERACTION",
+      "intent": "INFORMATION",
+      "topics": ["Interaction"],
+      "link": ""
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Context Provided",
+      "description": "Additional context and background information is provided.",
+      "type": "CONTEXT",
+      "intent": "INFORMATION",
+      "topics": ["Context"],
+      "link": ""
+    }
+  ]
+} 
