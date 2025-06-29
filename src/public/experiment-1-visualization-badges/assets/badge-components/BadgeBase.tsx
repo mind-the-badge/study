@@ -79,7 +79,11 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                     avatar={leftIconKey === 'avatar' ? getAvatarElement(avatar) : undefined}
                     icon={leftIconKey !== 'avatar' ? leftIcon || undefined : undefined}
                     deleteIcon={rightIcon || undefined}
-                    onDelete={rightIcon ? () => {} : undefined}
+                    onDelete={rightIcon ? (event) => {
+                        // Prevent the default delete behavior
+                        event.stopPropagation();
+                        // You can add custom click handler here if needed
+                    } : undefined}
                     clickable
                     color={chipColor as any}
                     sx={{

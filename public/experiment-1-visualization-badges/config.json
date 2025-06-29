@@ -21,6 +21,10 @@
     "sidebar": true,
     "studyEndMsg": "Thank you for participating!"
   },
+  "importedLibraries": [
+    "demographics",
+    "sus"
+  ],
   "baseComponents": {
     "stimuliWithBadge": {
       "description": "A visualization with a badge overlay.",
@@ -147,6 +151,149 @@
           "type": "longText"
         }
       ]
+    },
+    "demographics-custom": {
+      "type": "questionnaire",
+      "description": "Basic demographic questions including gender, age, and education",
+      "response": [
+        {
+          "id": "gender",
+          "prompt": "What is your **gender**?",
+          "required": true,
+          "location": "sidebar",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Woman",
+            "Man",
+            "Non-binary / Genderqueer / Third gender",
+            "Genderfluid / Gender non-conforming",
+            "Questioning",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "age",
+          "prompt": "What is your **age**?",
+          "required": true,
+          "location": "sidebar",
+          "type": "numerical",
+          "placeholder": "Enter your age",
+          "min": 18,
+          "max": 100
+        },
+        {
+          "id": "education",
+          "prompt": "What is the **highest degree or level of education** you have completed?",
+          "required": true,
+          "location": "sidebar",
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Less than high school",
+            "High school diploma or equivalent",
+            "Bachelor's degree or equivalent",
+            "Master's degree or equivalent",
+            "Doctoral degree or equivalent"
+          ]
+        }
+      ]
+    },
+    "sus-contextualized": {
+      "type": "questionnaire",
+      "description": "System Usability Scale contextualized for visualization badges",
+      "response": [
+        {
+          "id": "use-frequently",
+          "prompt": "I think that I would like to use **visualization badges** frequently",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "unnecessarily-complex",
+          "prompt": "I found **visualization badges** unnecessarily complex",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "easy-to-use",
+          "prompt": "I thought **visualization badges** were easy to use",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "need-technical-support",
+          "prompt": "I think that I would need the support of a technical person to be able to use **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "well-integrated",
+          "prompt": "I found the various functions in **visualization badges** were well integrated",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "too-inconsistent",
+          "prompt": "I thought there was too much inconsistency in **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "quick-to-learn",
+          "prompt": "I would imagine that most people would learn to use **visualization badges** very quickly",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "cumbersome-to-use",
+          "prompt": "I found **visualization badges** very cumbersome to use",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "confident-using",
+          "prompt": "I felt very confident using **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "needed-to-learn-lot",
+          "prompt": "I needed to learn a lot of things before I could get going with **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        }
+      ]
     }
   },
   "sequence": {
@@ -157,7 +304,9 @@
       "condition-1-task",
       "condition-1-badge-awareness",
       "badge-onboarding",
-      "condition-2-multiple-badges"
+      "condition-2-multiple-badges",
+      "demographics-custom",
+      "sus-contextualized"
     ]
   }
 }
