@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Drawer, Typography } from '@mui/material';
-import BinaryBadge from './badge-components/BinaryBadge';
+import { Box, Drawer, Typography, Chip } from '@mui/material';
+import { PREFIX } from '../../../utils/Prefix';
 
 // Badge data for multiple badges
 const badgeData = [
@@ -18,10 +18,10 @@ const badgeData = [
     badgeType: "BINARY",
     id: "2",
     label: "Methodology Verified",
-    description: "The methodology used in this visualization has been verified.",
-    type: "METHOD",
+    description: "The methodology used in this visualization has been verified by experts.",
+    type: "ANALYSIS",
     intent: "CONFIRMATION",
-    topics: ["Method"],
+    topics: ["Methodology"],
     link: ""
   },
   {
@@ -29,29 +29,29 @@ const badgeData = [
     id: "3",
     label: "Peer Reviewed",
     description: "This visualization has undergone peer review.",
-    type: "QUALITY",
+    type: "ANALYSIS",
     intent: "CONFIRMATION",
-    topics: ["Quality"],
+    topics: ["Review"],
     link: ""
   },
   {
     badgeType: "BINARY",
     id: "4",
-    label: "Updated Recently",
-    description: "This visualization has been updated within the last 30 days.",
-    type: "TIME",
-    intent: "CONFIRMATION",
-    topics: ["Time"],
+    label: "Interactive Features",
+    description: "This visualization includes interactive features for exploration.",
+    type: "INTERACTION",
+    intent: "INFORMATION",
+    topics: ["Interaction"],
     link: ""
   },
   {
     badgeType: "BINARY",
     id: "5",
-    label: "Accessible Design",
-    description: "This visualization follows accessibility guidelines.",
-    type: "ACCESS",
-    intent: "CONFIRMATION",
-    topics: ["Accessibility"],
+    label: "Context Provided",
+    description: "Additional context and background information is provided.",
+    type: "CONTEXT",
+    intent: "INFORMATION",
+    topics: ["Context"],
     link: ""
   }
 ];
@@ -69,7 +69,7 @@ const StimuliWithMultipleBadges: React.FC = () => {
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
       {/* Main stimuli image */}
       <img 
-        src="/mind-the-badge/experiment-1-visualization-badges/assets/sample-stimuli.png" 
+        src={`${PREFIX}experiment-1-visualization-badges/assets/sample-stimuli.png`}
         alt="Sample visualization stimuli"
         style={{ 
           width: '100%', 
@@ -78,66 +78,35 @@ const StimuliWithMultipleBadges: React.FC = () => {
         }}
       />
       
-      {/* Badge container in bottom right */}
+      {/* Multiple badges positioned at bottom right */}
       <Box sx={{
         position: 'absolute',
         bottom: '10px',
         right: '10px',
         zIndex: 10,
         display: 'flex',
-        flexDirection: 'row',
-        gap: '5px',
-        alignItems: 'center'
+        gap: 1,
+        flexWrap: 'wrap',
+        justifyContent: 'flex-end'
       }}>
-        {/* Badge 1 */}
-        <Box onClick={() => handleBadgeClick(badgeData[0])} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData[0]}
-            size="medium"
-            variant="filled"
-            chipColor="primary"
-          />
-        </Box>
-        
-        {/* Badge 2 */}
-        <Box onClick={() => handleBadgeClick(badgeData[1])} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData[1]}
-            size="medium"
-            variant="filled"
-            chipColor="secondary"
-          />
-        </Box>
-        
-        {/* Badge 3 */}
-        <Box onClick={() => handleBadgeClick(badgeData[2])} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData[2]}
-            size="medium"
-            variant="filled"
-            chipColor="success"
-          />
-        </Box>
-        
-        {/* Badge 4 */}
-        <Box onClick={() => handleBadgeClick(badgeData[3])} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData[3]}
-            size="medium"
-            variant="filled"
-            chipColor="warning"
-          />
-        </Box>
-        
-        {/* Badge 5 */}
-        <Box onClick={() => handleBadgeClick(badgeData[4])} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData[4]}
-            size="medium"
-            variant="filled"
-            chipColor="error"
-          />
-        </Box>
+        {badgeData.map((badge, index) => (
+          <Box key={badge.id} onClick={() => handleBadgeClick(badge)} sx={{ cursor: 'pointer' }}>
+            <Chip
+              label={badge.label}
+              size="small"
+              color="primary"
+              variant="filled"
+              sx={{
+                fontSize: '10px',
+                height: '24px',
+                '& .MuiChip-label': {
+                  px: 1,
+                  fontSize: '10px'
+                }
+              }}
+            />
+          </Box>
+        ))}
       </Box>
 
       {/* Badge Information Panel */}

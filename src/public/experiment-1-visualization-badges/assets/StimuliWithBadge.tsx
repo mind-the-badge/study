@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Drawer, Typography } from '@mui/material';
-import BinaryBadge from './badge-components/BinaryBadge';
+import { PREFIX } from '../../../utils/Prefix';
 
 // Badge data for "Data Sources Disclosed"
 const badgeData = {
@@ -27,7 +27,7 @@ const StimuliWithBadge: React.FC = () => {
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
       {/* Main stimuli image */}
       <img 
-        src="/experiment-1-visualization-badges/assets/sample-stimuli.png" 
+        src={`${PREFIX}experiment-1-visualization-badges/assets/sample-stimuli.png`}
         alt="Sample visualization stimuli"
         style={{ 
           width: '100%', 
@@ -43,13 +43,24 @@ const StimuliWithBadge: React.FC = () => {
         right: '10px',
         zIndex: 10
       }}>
-        <Box onClick={() => handleBadgeClick(badgeData)} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData}
-            size="medium"
-            variant="filled"
-            chipColor="primary"
-          />
+        <Box 
+          onClick={() => handleBadgeClick(badgeData)} 
+          sx={{ 
+            cursor: 'pointer',
+            backgroundColor: '#1976d2',
+            color: 'white',
+            padding: '8px 12px',
+            borderRadius: '16px',
+            fontSize: '12px',
+            fontWeight: 500,
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            transition: 'background-color 0.2s',
+            '&:hover': {
+              backgroundColor: '#1565c0'
+            }
+          }}
+        >
+          {badgeData.label}
         </Box>
       </Box>
 
