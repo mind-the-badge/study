@@ -1,27 +1,72 @@
-# reVISit study – Interactive, Web-Based User Studies.  
+# Mind the Badge - Visualization Badges Experiment
 
-Create your own interactive, web-based data visualization user studies by cloning/forking and editing configuration files and adding stimuli in the `public` folder. 
+This repository contains a reVISit-based experiment examining visualization badges and their impact on user trust and understanding.
 
-reVISit introduces reVISit.spec a DSL for specifying study setups (consent forms, training, trials, etc) for interactive web based studies. You describe your experimental setup in reVISit.spec, add your stimuli as images, forms, html pages, or React components, build and deploy – and you're ready to run your study. For tutorials and documentation, see the [reVISit website](https://revisit.dev). 
+## Experiment Overview
 
-## Build Instructions
+The experiment consists of two main conditions:
+1. **Condition 1**: Single badge awareness test
+2. **Condition 2**: Multiple badges usability test
 
-To run this demo experiment locally, you will need to install node on your computer. 
+## Live Version
 
-* Clone `https://github.com/revisit-studies/study`
-* Run `yarn install`. If you don't have yarn installed, run `npm i -g yarn`. 
-* To run locally, run `yarn serve`.
-* Go to [http://localhost:8080](http://localhost:8080) to view it in your browser. The page will reload when you make changes. 
+The experiment is deployed at: [https://valentinedelsbrunner.github.io/mind-the-badge/](https://valentinedelsbrunner.github.io/mind-the-badge/)
 
-## Release Instructions
+## Local Development
 
-Releasing reVISit.dev happens automatically when a PR is merged into the `main` branch. The name of the pull request should be the title of the release, e.g. `v1.0.0`. Releasing creates a tag with the same name as the PR, but the official GitGub release should be created manually. The `main` branch is protected and requires two reviews before merging.
+To run the experiment locally:
 
-The workflow for release looks as follows:
-Develop features on feature branch
-| PRs
-Dev branch
-| PR (1 per release)
-Main branch
-| Run release workflow on merge
-References are updated and commit is tagged
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run serve
+```
+
+The experiment will be available at `http://localhost:8080`
+
+## Deployment
+
+This experiment is automatically deployed to GitHub Pages using GitHub Actions. The deployment workflow:
+
+1. Builds the project using `npm run build`
+2. Deploys the built files to the `gh-pages` branch
+3. Makes the experiment available at `https://valentinedelsbrunner.github.io/mind-the-badge/`
+
+## Experiment Structure
+
+- **Introduction**: Welcome and study overview
+- **Consent**: Informed consent form
+- **Condition 1 Task**: Information-seeking questions with single badge
+- **Badge Awareness**: Questions about badge noticeability
+- **Badge Onboarding**: Educational content about visualization badges
+- **Condition 2 Multiple Badges**: Trust and understanding questions with 5 badges
+- **Demographics**: Age, gender, and education questions
+- **SUS Survey**: System Usability Scale contextualized for visualization badges
+
+## Features
+
+- **Interactive badges**: Clickable badges with detailed information panels
+- **Responsive design**: Works on desktop and mobile devices
+- **Data collection**: Comprehensive survey with standardized metrics
+- **Professional UI**: Clean, modern interface following reVISit best practices
+
+## Technologies
+
+- **reVISit**: Survey framework
+- **React**: Frontend framework
+- **TypeScript**: Type safety
+- **Vite**: Build tool
+- **GitHub Pages**: Hosting
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
