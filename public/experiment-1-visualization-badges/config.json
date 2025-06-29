@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Experiment 1 - Visualization Badges",
+    "version": "1.0.0",
+    "authors": [
+      "Your Name"
+    ],
+    "date": "2025-01-28",
+    "description": "A study examining visualization badges.",
+    "organizations": [
+      "Your Organization"
+    ]
+  },
+  "uiConfig": {
+    "contactEmail": "contact@yourstudy.com",
+    "helpTextPath": "experiment-1-visualization-badges/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": false,
+    "sidebar": true,
+    "studyEndMsg": "Thank you for participating!"
+  },
+  "baseComponents": {
+    "stimuliWithBadge": {
+      "description": "A visualization with a badge overlay.",
+      "type": "react-component",
+      "path": "experiment-1-visualization-badges/assets/StimuliWithBadge.tsx",
+      "nextButtonLocation": "sidebar",
+      "instructionLocation": "sidebar",
+      "response": []
+    }
+  },
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "experiment-1-visualization-badges/assets/introduction.md",
+      "response": []
+    },
+    "consent": {
+      "type": "markdown",
+      "path": "experiment-1-visualization-badges/assets/consent.md",
+      "response": []
+    },
+    "badge-trial": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Please examine the visualization below and answer the questions about the badge.",
+      "response": [
+        {
+          "id": "badge-noticed",
+          "prompt": "Did you notice the badge on the visualization?",
+          "location": "sidebar",
+          "type": "radio",
+          "options": [
+            "Not at all",
+            "Slightly",
+            "Somewhat",
+            "Very much",
+            "Extremely"
+          ]
+        },
+        {
+          "id": "badge-understanding",
+          "prompt": "What do you think the badge 'Data Sources Disclosed' means? Please explain in your own words.",
+          "location": "sidebar",
+          "type": "longText"
+        },
+        {
+          "id": "badge-trust",
+          "prompt": "How much does this badge increase your trust in the visualization?",
+          "location": "sidebar",
+          "type": "radio",
+          "options": [
+            "Not at all",
+            "Slightly",
+            "Somewhat",
+            "Very much",
+            "Extremely"
+          ]
+        }
+      ]
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "consent",
+      "badge-trial"
+    ]
+  }
+} 

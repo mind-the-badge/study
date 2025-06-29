@@ -1,0 +1,14 @@
+[
+  {
+    "badgeType": "BINARY",
+    "id": "1",
+    "label": "Data Sources Disclosed",
+    "description": "Indicates that the data sources for this visualization are known and listed.",
+    "type": "DATA",
+    "intent": "CONFIRMATION",
+    "topics": [
+      "Source"
+    ],
+    "link": ""
+  }
+] 
