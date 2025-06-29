@@ -69,7 +69,7 @@ const StimuliWithMultipleBadges: React.FC = () => {
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
       {/* Main stimuli image */}
       <img 
-        src="/experiment-1-visualization-badges/assets/sample-stimuli.png" 
+        src="/mind-the-badge/experiment-1-visualization-badges/assets/sample-stimuli.png" 
         alt="Sample visualization stimuli"
         style={{ 
           width: '100%', 
