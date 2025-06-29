@@ -207,7 +207,7 @@
           "id": "use-frequently",
           "prompt": "I think that I would like to use **visualization badges** frequently",
           "required": true,
-          "type": "likert",
+`          "type": "likert",
           "numItems": 5,
           "rightLabel": "Strongly Agree",
           "leftLabel": "Strongly Disagree"
