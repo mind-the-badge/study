@@ -1,34 +1,40 @@
-name: Deploy to GitHub Pages
+name: Deploy To GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist 
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: 'yarn'
+
+      - run: yarn install --immutable
+
+      - name: Build with .env file
+        if: ${{ vars.VITE_STORAGE_ENGINE == '' }}
+        run: yarn build
+
+      - name: Build with github environment variables
+        if: ${{ vars.VITE_STORAGE_ENGINE != '' }}
+        run: VITE_STORAGE_ENGINE=$VITE_STORAGE_ENGINE yarn build
+        env:
+          VITE_STORAGE_ENGINE: ${{ vars.VITE_STORAGE_ENGINE }}
+
+      - uses: peaceiris/actions-gh-pages@v3
+        name: Deploy
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist 
