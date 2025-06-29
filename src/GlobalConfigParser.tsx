@@ -23,7 +23,12 @@ import { FirebaseStorageEngine } from './storage/engines/FirebaseStorageEngine';
 import { PageTitle } from './utils/PageTitle';
 
 async function fetchGlobalConfigArray() {
-  const globalFile = await fetch(`${PREFIX}global.json`);
+  // Ensure PREFIX is correctly set for the current environment
+  const prefix = import.meta.env.PROD
+    ? (import.meta.env.VITE_BASE_PATH || '/mind-the-badge/')
+    : '/';
+  
+  const globalFile = await fetch(`${prefix}global.json`);
   const configs = await globalFile.text();
   return parseGlobalConfig(configs);
 }
