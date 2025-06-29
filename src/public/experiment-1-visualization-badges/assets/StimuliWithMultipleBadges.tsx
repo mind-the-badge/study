@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Drawer, Typography, Chip } from '@mui/material';
+import { Box, Drawer, Typography } from '@mui/material';
+import BinaryBadge from './badge-components/BinaryBadge';
 import { PREFIX } from '../../../utils/Prefix';
 
 // Badge data for multiple badges
@@ -78,35 +79,66 @@ const StimuliWithMultipleBadges: React.FC = () => {
         }}
       />
       
-      {/* Multiple badges positioned at bottom right */}
+      {/* Badge container in bottom right */}
       <Box sx={{
         position: 'absolute',
         bottom: '10px',
         right: '10px',
         zIndex: 10,
         display: 'flex',
-        gap: 1,
-        flexWrap: 'wrap',
-        justifyContent: 'flex-end'
+        flexDirection: 'row',
+        gap: '5px',
+        alignItems: 'center'
       }}>
-        {badgeData.map((badge, index) => (
-          <Box key={badge.id} onClick={() => handleBadgeClick(badge)} sx={{ cursor: 'pointer' }}>
-            <Chip
-              label={badge.label}
-              size="small"
-              color="primary"
-              variant="filled"
-              sx={{
-                fontSize: '10px',
-                height: '24px',
-                '& .MuiChip-label': {
-                  px: 1,
-                  fontSize: '10px'
-                }
-              }}
-            />
-          </Box>
-        ))}
+        {/* Badge 1 */}
+        <Box onClick={() => handleBadgeClick(badgeData[0])} sx={{ cursor: 'pointer' }}>
+          <BinaryBadge 
+            badge={badgeData[0]}
+            size="medium"
+            variant="filled"
+            chipColor="primary"
+          />
+        </Box>
+        
+        {/* Badge 2 */}
+        <Box onClick={() => handleBadgeClick(badgeData[1])} sx={{ cursor: 'pointer' }}>
+          <BinaryBadge 
+            badge={badgeData[1]}
+            size="medium"
+            variant="filled"
+            chipColor="secondary"
+          />
+        </Box>
+        
+        {/* Badge 3 */}
+        <Box onClick={() => handleBadgeClick(badgeData[2])} sx={{ cursor: 'pointer' }}>
+          <BinaryBadge 
+            badge={badgeData[2]}
+            size="medium"
+            variant="filled"
+            chipColor="success"
+          />
+        </Box>
+        
+        {/* Badge 4 */}
+        <Box onClick={() => handleBadgeClick(badgeData[3])} sx={{ cursor: 'pointer' }}>
+          <BinaryBadge 
+            badge={badgeData[3]}
+            size="medium"
+            variant="filled"
+            chipColor="warning"
+          />
+        </Box>
+        
+        {/* Badge 5 */}
+        <Box onClick={() => handleBadgeClick(badgeData[4])} sx={{ cursor: 'pointer' }}>
+          <BinaryBadge 
+            badge={badgeData[4]}
+            size="medium"
+            variant="filled"
+            chipColor="error"
+          />
+        </Box>
       </Box>
 
       {/* Badge Information Panel */}
