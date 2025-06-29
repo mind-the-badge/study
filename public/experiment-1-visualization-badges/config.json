@@ -29,6 +29,14 @@
       "nextButtonLocation": "sidebar",
       "instructionLocation": "sidebar",
       "response": []
+    },
+    "stimuliWithMultipleBadges": {
+      "description": "A visualization with multiple badges overlay.",
+      "type": "react-component",
+      "path": "experiment-1-visualization-badges/assets/StimuliWithMultipleBadges.tsx",
+      "nextButtonLocation": "sidebar",
+      "instructionLocation": "sidebar",
+      "response": []
     }
   },
   "components": {
@@ -80,6 +88,65 @@
           "type": "longText"
         }
       ]
+    },
+    "badge-onboarding": {
+      "type": "markdown",
+      "path": "experiment-1-visualization-badges/assets/badge-onboarding.md",
+      "response": []
+    },
+    "condition-2-multiple-badges": {
+      "baseComponent": "stimuliWithMultipleBadges",
+      "instruction": "Please examine this visualization and answer the questions about it and the badges.",
+      "response": [
+        {
+          "id": "trust-visualization",
+          "prompt": "I trust this visualization*",
+          "location": "sidebar",
+          "type": "slider",
+          "options": [
+            {
+              "label": "1 - Not at all",
+              "value": 1
+            },
+            {
+              "label": "5 - Somewhat",
+              "value": 5
+            },
+            {
+              "label": "10 - Completely",
+              "value": 10
+            }
+          ],
+          "startingValue": 5
+        },
+        {
+          "id": "understand-visualization",
+          "prompt": "I understand this visualization*",
+          "location": "sidebar",
+          "type": "slider",
+          "options": [
+            {
+              "label": "1 - Not at all",
+              "value": 1
+            },
+            {
+              "label": "5 - Somewhat",
+              "value": 5
+            },
+            {
+              "label": "10 - Completely",
+              "value": 10
+            }
+          ],
+          "startingValue": 5
+        },
+        {
+          "id": "badges-helping",
+          "prompt": "Are the visualization badges helping you?",
+          "location": "sidebar",
+          "type": "longText"
+        }
+      ]
     }
   },
   "sequence": {
@@ -88,7 +155,9 @@
       "introduction",
       "consent",
       "condition-1-task",
-      "condition-1-badge-awareness"
+      "condition-1-badge-awareness",
+      "badge-onboarding",
+      "condition-2-multiple-badges"
     ]
   }
 }
