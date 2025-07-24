@@ -1,57 +1,124 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Drawer, Typography } from '@mui/material';
 import BinaryBadge from './badge-components/BinaryBadge';
 import { PREFIX } from '../../../utils/Prefix';
+import { StimulusParams } from '../../../store/types';
 
-// Badge data for "Data Sources Disclosed"
-const badgeData = {
-  badgeType: "BINARY",
-  id: "1",
-  label: "Data Sources Disclosed",
-  description: "Indicates that the data sources for this visualization are known and listed.",
-  type: "DATA",
-  intent: "CONFIRMATION",
-  topics: ["Source"],
-  link: ""
-};
+// TypeScript types for badge data and props
+interface BadgeData {
+  badgeType: string;
+  id: string;
+  label: string;
+  description: string;
+  type: string;
+  intent: string;
+  topics: string[];
+  link: string;
+  avatar?: any;
+  badgeName?: string;
+}
 
-const StimuliWithBadge: React.FC = () => {
-  const [selectedBadge, setSelectedBadge] = useState<any>(null);
+interface BadgeStimulusParams {
+  imageSrc?: string;
+  imageAlt?: string;
+  badgeDataPath?: string;
+}
+
+const DEFAULT_BADGE_DATA_PATH = `${PREFIX}experiment-1-visualization-badges/assets/badge-data.json`;
+
+const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ parameters }) => {
+  const imageSrc = parameters?.imageSrc;
+  const imageAlt = parameters?.imageAlt || 'Visualization stimuli';
+  const badgeDataPath = parameters?.badgeDataPath || DEFAULT_BADGE_DATA_PATH;
+
+  const [badges, setBadges] = useState<BadgeData[]>([]);
+  const [selectedBadge, setSelectedBadge] = useState<BadgeData | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleBadgeClick = (badge: any) => {
+  // Load badge data from JSON file
+  useEffect(() => {
+    fetch(badgeDataPath)
+      .then((res) => res.json())
+      .then((data) => {
+        let loadedBadges: BadgeData[] = [];
+        if (Array.isArray(data)) {
+          loadedBadges = data;
+        } else if (Array.isArray(data.badges)) {
+          loadedBadges = data.badges;
+        }
+        setBadges(loadedBadges);
+        console.log('[StimuliWithBadge] Loaded badges:', loadedBadges);
+        if (loadedBadges.length === 0) {
+          console.warn('[StimuliWithBadge] No badges found in badge data:', data);
+        }
+      })
+      .catch((err) => {
+        setBadges([]);
+        console.error('[StimuliWithBadge] Error loading badge data:', err);
+      });
+  }, [badgeDataPath]);
+
+  const handleBadgeClick = (badge: BadgeData) => {
     setSelectedBadge(badge);
     setIsDrawerOpen(true);
   };
 
+  // Compute the correct image path
+  let resolvedImageSrc = '';
+  if (imageSrc) {
+    resolvedImageSrc = imageSrc.startsWith('http') ? imageSrc : `${PREFIX}${imageSrc}`;
+    console.log('[StimuliWithBadge] Resolved imageSrc:', resolvedImageSrc);
+  } else {
+    console.warn('[StimuliWithBadge] No imageSrc provided');
+  }
+
+  // Log when rendering badges
+  useEffect(() => {
+    if (badges.length > 0) {
+      console.log('[StimuliWithBadge] Rendering badges:', badges.map(b => b.label));
+    } else {
+      console.warn('[StimuliWithBadge] Badge row is empty');
+    }
+  }, [badges]);
+
   return (
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
       {/* Main stimuli image */}
-      <img 
-        src={`${PREFIX}experiment-1-visualization-badges/assets/sample-stimuli.png`}
-        alt="Sample visualization stimuli"
-        style={{ 
-          width: '100%', 
-          height: 'auto',
-          display: 'block'
+      {resolvedImageSrc && (
+        <img
+          src={resolvedImageSrc}
+          alt={imageAlt}
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+          }}
+        />
+      )}
+
+      {/* Badges row at bottom right */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '5px',
+          alignItems: 'center',
         }}
-      />
-      
-      {/* Badge positioned at bottom right */}
-      <Box sx={{
-        position: 'absolute',
-        bottom: '10px',
-        right: '10px',
-        zIndex: 10
-      }}>
-        <Box onClick={() => handleBadgeClick(badgeData)} sx={{ cursor: 'pointer' }}>
-          <BinaryBadge 
-            badge={badgeData}
-            size="medium"
-            variant="filled"
-            chipColor="primary"
-          />
-        </Box>
+      >
+        {badges.map((badge, idx) => (
+          <Box key={badge.id || idx} onClick={() => handleBadgeClick(badge)} sx={{ cursor: 'pointer' }}>
+            <BinaryBadge
+              badge={badge}
+              size="medium"
+              variant="filled"
+              chipColor="primary"
+            />
+          </Box>
+        ))}
       </Box>
 
       {/* Badge Information Panel */}
@@ -64,8 +131,8 @@ const StimuliWithBadge: React.FC = () => {
             width: 300,
             padding: 2,
             marginTop: 8,
-            zIndex: 9999
-          }
+            zIndex: 9999,
+          },
         }}
       >
         <Box sx={{ width: 300, p: 2 }}>
