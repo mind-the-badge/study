@@ -96,17 +96,15 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
         />
       )}
 
-      {/* Badges row at bottom right */}
+      {/* Badges row below the image */}
       <Box
         sx={{
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
-          zIndex: 10,
+          mt: 0,
           display: 'flex',
           flexDirection: 'row',
           gap: '5px',
           alignItems: 'center',
+          justifyContent: 'flex-end',
         }}
       >
         {badges.map((badge, idx) => (
@@ -188,4 +186,4 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   );
 };
 
-export default StimuliWithBadge; 
+export default StimuliWithBadge;
