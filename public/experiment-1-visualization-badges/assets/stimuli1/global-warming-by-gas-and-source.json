@@ -15,7 +15,7 @@
       "badgeType": "BINARY",
       "id": "2",
       "label": "Complicated Units",
-      "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/complicated-units",
+      "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/complicated-units.md",
       "description": "Complicated Untis Description",
       "type": "CONTEXT",
       "intent": "INFORMATION",
