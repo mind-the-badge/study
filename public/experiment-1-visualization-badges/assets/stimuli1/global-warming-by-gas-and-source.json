@@ -5,9 +5,21 @@
       "id": "1",
       "label": "Data Sources Disclosed",
       "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/data-sources-disclosed.md",
+      "description": "Data Source Description",
       "type": "DATA",
       "intent": "CONFIRMATION",
       "topics": ["Source"],
+      "link": ""
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "Complicated Units",
+      "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/complicated-units",
+      "description": "Complicated Untis Description",
+      "type": "CONTEXT",
+      "intent": "INFORMATION",
+      "topics": ["Information"],
       "link": ""
     }
   ]
