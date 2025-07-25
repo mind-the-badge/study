@@ -1,12 +1,17 @@
 import React from "react";
-import { CheckCircle, Info, Warning, DatasetOutlined, AnalyticsOutlined, BubbleChartOutlined, TouchAppOutlined, QueryStatsOutlined } from "@mui/icons-material";
+import { CheckCircle, Warning, DatasetOutlined, AnalyticsOutlined, BubbleChartOutlined, TouchAppOutlined, QueryStatsOutlined } from "@mui/icons-material";
+import { BiSolidInfoSquare } from "react-icons/bi";
 
 export function getMuiIcon(iconName: string, size: string): React.ReactElement | null {
     if (!iconName) return null;
 
+    if (iconName === 'Info') {
+        const iconSize = size === 'large' ? 22 : 18;
+        return <BiSolidInfoSquare size={iconSize} />;
+    }
+
     const iconMap: { [key: string]: React.ComponentType<any> } = {
         'CheckCircle': CheckCircle,
-        'Info': Info,
         'Warning': Warning,
         'DatasetOutlined': DatasetOutlined,
         'AnalyticsOutlined': AnalyticsOutlined,

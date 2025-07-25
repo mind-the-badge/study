@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Box, Chip, Tooltip } from '@mui/material';
 import * as Icons from '@mui/icons-material';
-import { getMuiIcon } from "./utils/getIcon.js";
+import { getMuiIcon } from "./utils/getIcon";
 import { icon_intent_map, icon_scope_map } from "./utils/iconMappings.js";
 
 interface BadgeBaseProps {
@@ -60,6 +60,9 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
     const rightIcon = resolveIcon(rightIconKey, { intent, type }, size);
     const displayLabel = hideLabel ? undefined : label;
 
+    console.info('[BadgeBase] intent:', intent, 'type:', type, 'leftIconKey:', leftIconKey, 'rightIconKey:', rightIconKey);
+    console.info('[BadgeBase] leftIcon:', leftIcon, 'rightIcon:', rightIcon);
+
     return (
         <Box>
             <Tooltip title={description}>
@@ -73,7 +76,7 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                         event.stopPropagation();
                     } : undefined}
                     clickable
-                    color={chipColor}
+                    color={chipColor as any}
                     sx={{
                         ...chipSx,
                         ...(hideLabel && {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import BinaryBadge from './badge-components/BinaryBadge';
 import { BadgeData } from './BadgeInfoDrawer';
+import { BiSolidInfoSquare } from "react-icons/bi";
 
 interface BadgeRowProps {
   badges: BadgeData[];
