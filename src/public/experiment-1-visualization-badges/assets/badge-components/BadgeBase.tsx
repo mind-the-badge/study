@@ -31,13 +31,6 @@ function mapChipSize(customSize: string) {
     }
 }
 
-function getAvatarElement(avatar: any): React.ReactElement | undefined {
-    if (!avatar) return undefined;
-    if (avatar.type === 'letter') return <Avatar>{avatar.value}</Avatar>;
-    if (avatar.type === 'image') return <Avatar src={avatar.value} />;
-    return undefined;
-}
-
 function resolveIcon(key: string, { intent, type }: { intent?: string; type?: string }, size: string) {
     if (key !== 'none') {
         let iconValue = "";
@@ -50,11 +43,9 @@ function resolveIcon(key: string, { intent, type }: { intent?: string; type?: st
     }
     return null;
 }
-
 const BadgeBase: React.FC<BadgeBaseProps> = ({
     label,
     description = '',
-    avatar,
     intent,
     type,
     size = 'medium',
@@ -76,16 +67,13 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                     label={displayLabel}
                     size={muiSize}
                     variant={variant}
-                    avatar={leftIconKey === 'avatar' ? getAvatarElement(avatar) : undefined}
                     icon={leftIconKey !== 'avatar' ? leftIcon || undefined : undefined}
                     deleteIcon={rightIcon || undefined}
                     onDelete={rightIcon ? (event) => {
-                        // Prevent the default delete behavior
                         event.stopPropagation();
-                        // You can add custom click handler here if needed
                     } : undefined}
                     clickable
-                    color={chipColor as any}
+                    color={chipColor}
                     sx={{
                         ...chipSx,
                         ...(hideLabel && {
@@ -102,4 +90,4 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
     );
 };
 
-export default BadgeBase; 
+export default BadgeBase;
