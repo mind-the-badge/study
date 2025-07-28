@@ -71,36 +71,40 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                 placement="top"
                 sx={{
                     '& .MuiTooltip-tooltip': {
-                        backgroundColor: 'rgba(0, 0, 0, 0.87)',
-                        color: 'white',
+                        background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.92) 0%, rgba(40, 40, 40, 0.92) 100%)',
+                        color: 'rgba(255, 255, 255, 0.9)',
                         fontSize: '0.875rem',
                         fontWeight: 400,
                         lineHeight: 1.4,
-                        padding: '8px 12px',
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-                        maxWidth: '280px',
+                        padding: '10px 14px',
+                        borderRadius: '10px',
+                        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08)',
+                        maxWidth: '300px',
                         textAlign: 'center',
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
                         fontFamily: '"Apfel Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        letterSpacing: '0.01em',
                         '& .MuiTooltip-arrow': {
-                            color: 'rgba(0, 0, 0, 0.87)',
+                            color: 'rgba(20, 20, 20, 0.92)',
+                            filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08))',
                         },
                     },
                 }}
                 componentsProps={{
                     tooltip: {
                         sx: {
-                            animation: 'fadeIn 0.2s ease-out',
-                            '@keyframes fadeIn': {
+                            animation: 'tooltipFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                            '@keyframes tooltipFadeIn': {
                                 '0%': {
                                     opacity: 0,
-                                    transform: 'translateY(4px)',
+                                    transform: 'translateY(6px) scale(0.98)',
+                                    filter: 'blur(2px)',
                                 },
                                 '100%': {
                                     opacity: 1,
-                                    transform: 'translateY(0)',
+                                    transform: 'translateY(0) scale(1)',
+                                    filter: 'blur(0px)',
                                 },
                             },
                         },
@@ -120,10 +124,29 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                     color={chipColor as any}
                     sx={{
                         ...chipSx,
-                        transition: 'all 0.2s ease-in-out',
+                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: 0,
+                            left: '-100%',
+                            width: '100%',
+                            height: '100%',
+                            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent)',
+                            transition: 'left 0.4s ease',
+                        },
                         '&:hover': {
-                            transform: 'translateY(-1px)',
-                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                            transform: 'translateY(-1px) scale(1.01)',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08)',
+                            '&::before': {
+                                left: '100%',
+                            },
+                        },
+                        '&:active': {
+                            transform: 'translateY(0px) scale(1.005)',
+                            transition: 'all 0.1s ease',
                         },
                         ...(hideLabel && {
                             pl: 0,
