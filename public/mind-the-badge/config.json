@@ -60,6 +60,20 @@
       "path": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-footnotes/source.png",
       "response": []
     },
+    "badges-well-being-by-age": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
+      },
+      "response": []
+    },
+    "footnotes-well-being-by-age": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-well-being-by-age/grp-footnotes/source.png",
+      "response": []
+    },
     "demographics-custom": {
       "type": "questionnaire",
       "description": "Basic demographic questions including gender, age, and education",
@@ -211,6 +225,8 @@
       "consent",
       "badges-global-warming-by-gas-and-source",
       "footnotes-global-warming-by-gas-and-source",
+      "badges-well-being-by-age",
+      "footnotes-well-being-by-age",
       "demographics-custom"
     ]
   }

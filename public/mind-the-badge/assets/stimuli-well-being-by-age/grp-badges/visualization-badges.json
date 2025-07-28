@@ -1,0 +1,37 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Data Source Disclosed",
+      "description": "Data Source Description",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Source"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-data-sources-disclosed.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "95% CI Error Bars",
+      "description": "95% CI Error Bars Description",
+      "type": "ANALYSIS",
+      "intent": "INFORMATION",
+      "topics": ["Uncertainty"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-95-ci-error-bars.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Truncated Axis",
+      "description": "Truncated Axis Description",
+      "type": "VISUAL ENCODING",
+      "intent": "WARNING",
+      "topics": ["Scale"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-truncated-axis.md"
+    }
+  ]
+} 
