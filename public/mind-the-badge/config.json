@@ -88,6 +88,20 @@
       "path": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-footnotes/source.png",
       "response": []
     },
+    "badges-nasa-global-surface-temperature": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/visualization-badges.json"
+      },
+      "response": []
+    },
+    "footnotes-nasa-global-surface-temperature": {
+      "type": "image",
+      "path": "mind-the-badge/assets/nasa-global-surface-temperature/grp-footnotes/source.png",
+      "response": []
+    },
     "demographics-custom": {
       "type": "questionnaire",
       "description": "Basic demographic questions including gender, age, and education",
@@ -243,6 +257,8 @@
       "footnotes-well-being-by-age",
       "badges-co2-emissions-vs-gdp",
       "footnotes-co2-emissions-vs-gdp",
+      "badges-nasa-global-surface-temperature",
+      "footnotes-nasa-global-surface-temperature",
       "demographics-custom"
     ]
   }
