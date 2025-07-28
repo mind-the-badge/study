@@ -5,12 +5,17 @@ import {
   Image, Text, Title, Anchor, List,
 } from '@mantine/core';
 import rehypeRaw from 'rehype-raw';
+import { PREFIX } from '../utils/Prefix';
 
 export function ReactMarkdownWrapper({ text, required }: { text: string; required?: boolean }) {
   const components: Partial<Components> = {
     img({
-      node, width, height, ...props
-    }) { return <Image {...props} h={height} w={width} ref={undefined} />; },
+      node, width, height, src, ...props
+    }) { 
+      // Add PREFIX to relative image paths
+      const imageSrc = src?.startsWith('http') ? src : src ? `${PREFIX}${src}` : src;
+      return <Image {...props} src={imageSrc} h={height} w={width} ref={undefined} />; 
+    },
     p({ node, ...props }) { return <Text {...props} pb={8} fw="inherit" ref={undefined} />; },
     h1({ node, ...props }) { return <Title {...props} order={1} {...props} pb={12} />; },
     h2({ node, ...props }) { return <Title {...props} order={2} {...props} pb={12} />; },
