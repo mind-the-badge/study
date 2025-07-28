@@ -1,0 +1,103 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Fossil CO₂ Only",
+      "description": "The emissions series includes CO₂ from burning coal, oil, gas, flaring, and relevant industrial processes (e.g., cement & steel); it **excludes** any CO₂ released or absorbed through land‑use change.",
+      "type": "DATA",
+      "intent": "INFORMATION",
+      "topics": ["Scope"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-fossil-co2-only.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "Land‑Use Excluded",
+      "description": "Totals omit emissions from deforestation or re/afforestation, so comparisons can under‑represent countries where land‑use change is large.",
+      "type": "DATA",
+      "intent": "WARNING",
+      "topics": ["Limitations"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-land-use-excluded.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "International‑$ Unit",
+      "description": "GDP values are in constant 2011 international dollars—i.e., adjusted for domestic inflation **and** purchasing‑power differences so one unit buys the same basket of goods everywhere.",
+      "type": "ANALYSIS",
+      "intent": "INFORMATION",
+      "topics": ["Units"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-international-dollar-unit.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Overlapping Elements",
+      "description": "Dense regions (e.g., South‑/East‑Asia) contain many circles that occlude one another and may hide smaller nations.",
+      "type": "VISUAL ENCODING",
+      "intent": "WARNING",
+      "topics": ["Clarity"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-overlapping-elements.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Adjusted Baseline",
+      "description": "Baselines are shifted because log scales cannot show zero; readers should keep this in mind when judging relative gaps.",
+      "type": "VISUAL ENCODING",
+      "intent": "WARNING",
+      "topics": ["Scale"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-adjusted-baseline.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Truncated Axis",
+      "description": "The GDP axis starts at ≈ $1 000 (not zero) and the CO₂ axis at 0.01 t, which can change perceived distances.",
+      "type": "VISUAL ENCODING",
+      "intent": "WARNING",
+      "topics": ["Scale"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-truncated-axis.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "Log Scale Used",
+      "description": "Both axes are logarithmic so that values spanning several orders of magnitude fit on one chart.",
+      "type": "VISUAL ENCODING",
+      "intent": "INFORMATION",
+      "topics": ["Scale"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-log-scale-used.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "8",
+      "label": "Open Data",
+      "description": "Underlying dataset (Global Carbon Budget 2024, Maddison Project, population tables) is openly available for download.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Transparency"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-8-open-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "9",
+      "label": "Data Source Disclosed",
+      "description": "Figure caption cites each primary source, allowing verification and re‑use.",
+      "type": "CONTEXT",
+      "intent": "CONFIRMATION",
+      "topics": ["Transparency"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-9-data-source-disclosed.md"
+    }
+  ]
+} 
