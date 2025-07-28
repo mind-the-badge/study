@@ -4,23 +4,23 @@
       "badgeType": "BINARY",
       "id": "1",
       "label": "Data Sources Disclosed",
-      "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/data-sources-disclosed.md",
       "description": "Data Source Description",
       "type": "DATA",
       "intent": "CONFIRMATION",
       "topics": ["Source"],
-      "link": ""
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-data-sources-disclosed.md"
     },
     {
       "badgeType": "BINARY",
       "id": "2",
       "label": "Complicated Units",
-      "descriptionPath": "/experiment-1-visualization-badges/assets/stimuli1/complicated-units.md",
       "description": "Complicated Untis Description",
       "type": "CONTEXT",
       "intent": "INFORMATION",
       "topics": ["Information"],
-      "link": ""
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-complicated-units.md"
     }
   ]
 }

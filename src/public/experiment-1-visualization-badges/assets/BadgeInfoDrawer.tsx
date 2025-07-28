@@ -16,16 +16,37 @@ export interface BadgeData {
   avatar?: any;
   badgeName?: string;
   descriptionPath?: string;
+  detailedDescription?: string;
+}
+
+// Helper function to generate description path based on badge properties
+function generateDescriptionPath(badge: BadgeData, basePath: string): string {
+  const slugifiedLabel = badge.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return `${basePath}/badge-${badge.id}-${slugifiedLabel}.md`;
 }
 
 interface BadgeInfoDrawerProps {
   badge: BadgeData | null;
   open: boolean;
   onClose: () => void;
+  basePath?: string; // Add base path prop
 }
 
-const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose }) => {
-  const { content, loading, error } = useMarkdown(badge?.descriptionPath);
+const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose, basePath }) => {
+  // Handle relative paths by prepending the base path
+  const getFullMarkdownPath = (detailedDescription?: string) => {
+    if (!detailedDescription) return undefined;
+    if (detailedDescription.startsWith('/')) {
+      return detailedDescription; // Already absolute
+    }
+    // Relative path - prepend the base path if available
+    if (basePath) {
+      return `${basePath}/${detailedDescription}`;
+    }
+    return detailedDescription; // Fallback to relative path
+  };
+
+  const { content, loading, error } = useMarkdown(getFullMarkdownPath(badge?.detailedDescription));
   return (
     <Drawer
       anchor="right"
@@ -53,7 +74,7 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose 
           {badge && badge.label}
         </Typography>
         <Box sx={{ flex: 1, mb: 3, fontSize: '1.1rem', color: 'text.primary', lineHeight: 1.7, overflow: 'auto' }}>
-          {badge?.descriptionPath ? (
+          {badge?.detailedDescription ? (
             loading ? <Typography>Loading...</Typography> :
             error ? <Typography color="error">{error}</Typography> :
             <ReactMarkdown>{content}</ReactMarkdown>

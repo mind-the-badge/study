@@ -55,6 +55,15 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
     setIsDrawerOpen(true);
   };
 
+  // Extract base path from detailedInformation for relative markdown links
+  const getBasePath = () => {
+    if (!detailedInformation) return undefined;
+    // Remove the filename and get the directory path
+    const lastSlashIndex = detailedInformation.lastIndexOf('/');
+    if (lastSlashIndex === -1) return undefined;
+    return detailedInformation.substring(0, lastSlashIndex);
+  };
+
   // Compute the correct image path
   let resolvedImageSrc = '';
   if (imageSrc) {
@@ -92,7 +101,12 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       <BadgeRow badges={badges} onBadgeClick={handleBadgeClick} selectedBadgeId={selectedBadge?.id || null} />
 
       {/* Badge Information Panel */}
-      <BadgeInfoDrawer badge={selectedBadge} open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+      <BadgeInfoDrawer 
+        badge={selectedBadge} 
+        open={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+        basePath={getBasePath()}
+      />
     </Box>
   );
 };

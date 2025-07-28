@@ -50,8 +50,8 @@
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
-        "imageSrc": "experiment-1-visualization-badges/assets/stimuli1/BADGES-global-warming-by-gas-and-source.png",
-        "detailedInformation": "/experiment-1-visualization-badges/assets/stimuli1/global-warming-by-gas-and-source.json"
+        "imageSrc": "experiment-1-visualization-badges/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
+        "detailedInformation": "/experiment-1-visualization-badges/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
       },
       "response": [
         {
