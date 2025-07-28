@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
-    "experiment-1-visualization-badges",
+    "mind-the-badge",
     "tutorial",
     "example-brush-interactions",
     "example-cleveland",
@@ -37,8 +37,8 @@
 
   ],
   "configs": {
-    "experiment-1-visualization-badges": {
-      "path": "experiment-1-visualization-badges/config.json"
+    "mind-the-badge": {
+      "path": "mind-the-badge/config.json"
     },
     "tutorial": {
       "path": "tutorial/config.json"

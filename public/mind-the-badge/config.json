@@ -14,7 +14,7 @@
   },
   "uiConfig": {
     "contactEmail": "contact@yourstudy.com",
-    "helpTextPath": "experiment-1-visualization-badges/assets/help.md",
+    "helpTextPath": "mind-the-badge/assets/help.md",
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
     "autoDownloadStudy": false,
@@ -29,7 +29,7 @@
     "stimuliWithBadge": {
       "description": "A visualization with badge overlay.",
       "type": "react-component",
-      "path": "experiment-1-visualization-badges/assets/StimuliWithBadge.tsx",
+      "path": "mind-the-badge/assets/StimuliWithBadge.tsx",
       "nextButtonLocation": "sidebar",
       "instructionLocation": "sidebar",
       "response": []
@@ -38,20 +38,20 @@
   "components": {
     "introduction": {
       "type": "markdown",
-      "path": "experiment-1-visualization-badges/assets/introduction.md",
+      "path": "mind-the-badge/assets/introduction.md",
       "response": []
     },
     "consent": {
       "type": "markdown",
-      "path": "experiment-1-visualization-badges/assets/consent.md",
+      "path": "mind-the-badge/assets/consent.md",
       "response": []
     },
     "condition-1-task": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
-        "imageSrc": "experiment-1-visualization-badges/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
-        "detailedInformation": "/experiment-1-visualization-badges/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
+        "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
       },
       "response": [
         {
@@ -93,9 +93,9 @@
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine this visualization and answer the questions about it and the badges.",
       "parameters": {
-        "imageSrc": "experiment-1-visualization-badges/assets/sample-stimuli.png",
+        "imageSrc": "mind-the-badge/assets/sample-stimuli.png",
         "imageAlt": "Sample visualization stimuli",
-        "detailedInformation": "experiment-1-visualization-badges/assets/badge-data.json"
+        "detailedInformation": "mind-the-badge/assets/badge-data.json"
       },
       "response": [
         {
