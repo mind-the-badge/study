@@ -7,20 +7,25 @@
       "description": "Data Source Description",
       "type": "DATA",
       "intent": "CONFIRMATION",
-      "topics": ["Source"],
-      "link": "",
       "detailedDescription": "detailed-badge-descriptions/badge-1-data-sources-disclosed.md"
     },
     {
       "badgeType": "BINARY",
       "id": "2",
       "label": "Complicated Units",
-      "description": "Complicated Untis Description",
+      "description": "Complicated Units Description",
       "type": "CONTEXT",
       "intent": "INFORMATION",
-      "topics": ["Information"],
-      "link": "",
       "detailedDescription": "detailed-badge-descriptions/badge-2-complicated-units.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Known Data-Gap",
+      "description": "This does not include cooling impacts from sulphur dioxide and aerosols, so the net warming can be lower.",
+      "type": "DATA",
+      "intent": "WARNING",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-known-data-gap.md"
     }
   ]
 }
