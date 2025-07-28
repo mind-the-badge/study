@@ -46,107 +46,19 @@
       "path": "mind-the-badge/assets/consent.md",
       "response": []
     },
-    "condition-1-task": {
+    "badges-global-warming-by-gas-and-source": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
       },
-      "response": [
-        {
-          "id": "task-question-2",
-          "prompt": "Which category has the highest value?",
-          "location": "sidebar",
-          "type": "radio",
-          "options": [
-            "Category A",
-            "Category B",
-            "Category C",
-            "Category D"
-          ]
-        }
-      ]
+      "response": []
     },
-    "condition-1-badge-awareness": {
-      "type": "questionnaire",
-      "instruction": "Answer questions",
-      "response": [
-        {
-          "id": "badge-noticed",
-          "prompt": "Did you notice the blue label with rounded corners at the bottom right of the visualization?",
-          "type": "radio",
-          "options": [
-            "Yes, I noticed it",
-            "No, I did not notice it",
-            "I'm not sure"
-          ]
-        },
-        {
-          "id": "badge-description",
-          "prompt": "Did you understand its meaing?? Explain in your own words.",
-          "type": "longText"
-        }
-      ]
-    },
-    "condition-2-multiple-badges": {
-      "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine this visualization and answer the questions about it and the badges.",
-      "parameters": {
-        "imageSrc": "mind-the-badge/assets/sample-stimuli.png",
-        "imageAlt": "Sample visualization stimuli",
-        "detailedInformation": "mind-the-badge/assets/badge-data.json"
-      },
-      "response": [
-        {
-          "id": "trust-visualization",
-          "prompt": "I trust this visualization*",
-          "location": "sidebar",
-          "type": "slider",
-          "options": [
-            {
-              "label": "1 - Not at all",
-              "value": 1
-            },
-            {
-              "label": "5 - Somewhat",
-              "value": 5
-            },
-            {
-              "label": "10 - Completely",
-              "value": 10
-            }
-          ],
-          "startingValue": 5
-        },
-        {
-          "id": "understand-visualization",
-          "prompt": "I understand this visualization*",
-          "location": "sidebar",
-          "type": "slider",
-          "options": [
-            {
-              "label": "1 - Not at all",
-              "value": 1
-            },
-            {
-              "label": "5 - Somewhat",
-              "value": 5
-            },
-            {
-              "label": "10 - Completely",
-              "value": 10
-            }
-          ],
-          "startingValue": 5
-        },
-        {
-          "id": "badges-helping",
-          "prompt": "Are the visualization badges helping you?",
-          "location": "sidebar",
-          "type": "longText"
-        }
-      ]
+    "footnotes-global-warming-by-gas-and-source": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-footnotes/source.png",
+      "response": []
     },
     "demographics-custom": {
       "type": "questionnaire",
@@ -297,9 +209,8 @@
     "components": [
       "introduction",
       "consent",
-      "condition-1-task",
-      "condition-1-badge-awareness",
-      "condition-2-multiple-badges",
+      "badges-global-warming-by-gas-and-source",
+      "footnotes-global-warming-by-gas-and-source",
       "demographics-custom"
     ]
   }

@@ -12,7 +12,7 @@ import { StimulusParams } from '../../../store/types';
 interface BadgeStimulusParams {
   imageSrc?: string;
   detailedInformation?: string;
-}
+  }
 
 const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ parameters }) => {
   const imageSrc = parameters?.imageSrc;
@@ -101,10 +101,10 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       <BadgeRow badges={badges} onBadgeClick={handleBadgeClick} selectedBadgeId={selectedBadge?.id || null} />
 
       {/* Badge Information Panel */}
-      <BadgeInfoDrawer 
-        badge={selectedBadge} 
-        open={isDrawerOpen} 
-        onClose={() => setIsDrawerOpen(false)} 
+      <BadgeInfoDrawer
+        badge={selectedBadge}
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
         basePath={getBasePath()}
       />
     </Box>
