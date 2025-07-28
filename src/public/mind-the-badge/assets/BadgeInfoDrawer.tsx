@@ -19,12 +19,6 @@ export interface BadgeData {
   detailedDescription?: string;
 }
 
-// Helper function to generate description path based on badge properties
-function generateDescriptionPath(badge: BadgeData, basePath: string): string {
-  const slugifiedLabel = badge.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  return `${basePath}/badge-${badge.id}-${slugifiedLabel}.md`;
-}
-
 interface BadgeInfoDrawerProps {
   badge: BadgeData | null;
   open: boolean;
@@ -33,13 +27,11 @@ interface BadgeInfoDrawerProps {
 }
 
 const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose, basePath }) => {
-  // Handle relative paths by prepending the base path
   const getFullMarkdownPath = (detailedDescription?: string) => {
     if (!detailedDescription) return undefined;
     if (detailedDescription.startsWith('/')) {
       return detailedDescription; // Already absolute
     }
-    // Relative path - prepend the base path if available
     if (basePath) {
       return `${basePath}/${detailedDescription}`;
     }
@@ -128,4 +120,4 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
   );
 };
 
-export default BadgeInfoDrawer; 
+export default BadgeInfoDrawer;

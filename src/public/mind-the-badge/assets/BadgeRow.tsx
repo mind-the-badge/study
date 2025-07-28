@@ -35,7 +35,6 @@ const BadgeRow: React.FC<BadgeRowProps> = ({ badges, onBadgeClick, selectedBadge
         onClick={() => onBadgeClick(badge)}
         sx={{
           cursor: 'pointer',
-          border: badge.id === selectedBadgeId ? '2px solid #1976d2' : '2px solid transparent',
           borderRadius: 2,
           transition: 'border 0.2s',
         }}
