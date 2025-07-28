@@ -65,7 +65,48 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
 
     return (
         <Box>
-            <Tooltip title={description}>
+            <Tooltip 
+                title={description}
+                arrow
+                placement="top"
+                sx={{
+                    '& .MuiTooltip-tooltip': {
+                        backgroundColor: 'rgba(0, 0, 0, 0.87)',
+                        color: 'white',
+                        fontSize: '0.875rem',
+                        fontWeight: 400,
+                        lineHeight: 1.4,
+                        padding: '8px 12px',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+                        maxWidth: '280px',
+                        textAlign: 'center',
+                        backdropFilter: 'blur(8px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        fontFamily: '"Apfel Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        '& .MuiTooltip-arrow': {
+                            color: 'rgba(0, 0, 0, 0.87)',
+                        },
+                    },
+                }}
+                componentsProps={{
+                    tooltip: {
+                        sx: {
+                            animation: 'fadeIn 0.2s ease-out',
+                            '@keyframes fadeIn': {
+                                '0%': {
+                                    opacity: 0,
+                                    transform: 'translateY(4px)',
+                                },
+                                '100%': {
+                                    opacity: 1,
+                                    transform: 'translateY(0)',
+                                },
+                            },
+                        },
+                    },
+                }}
+            >
                 <Chip
                     label={displayLabel}
                     size={muiSize}
@@ -79,6 +120,11 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                     color={chipColor as any}
                     sx={{
                         ...chipSx,
+                        transition: 'all 0.2s ease-in-out',
+                        '&:hover': {
+                            transform: 'translateY(-1px)',
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                        },
                         ...(hideLabel && {
                             pl: 0,
                             pr: 0,
