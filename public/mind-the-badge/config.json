@@ -51,7 +51,7 @@
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
-        "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
+        "detailedInformation": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
       },
       "response": [
         {
@@ -88,7 +88,7 @@
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/source.png",
-        "detailedInformation": "/mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
+        "detailedInformation": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
       },
       "response": [
         {
@@ -125,7 +125,7 @@
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/source.png",
-        "detailedInformation": "/mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
+        "detailedInformation": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
       },
       "response": [
         {
@@ -162,7 +162,7 @@
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/source.png",
-        "detailedInformation": "/mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/visualization-badges.json"
+        "detailedInformation": "mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/visualization-badges.json"
       },
       "response": [
         {
