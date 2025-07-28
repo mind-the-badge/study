@@ -29,7 +29,15 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       console.warn('[StimuliWithBadge] No detailedInformation path provided');
       return;
     }
-    fetch(detailedInformation)
+    
+    // Resolve the path for both local and deployed environments
+    const resolvedPath = detailedInformation.startsWith('http') 
+      ? detailedInformation 
+      : `${PREFIX}${detailedInformation}`;
+    
+    console.log('[StimuliWithBadge] Fetching badge data from:', resolvedPath);
+    
+    fetch(resolvedPath)
       .then((res) => res.json())
       .then((data) => {
         let loadedBadges: BadgeData[] = [];
