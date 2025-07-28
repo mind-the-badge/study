@@ -69,7 +69,19 @@
     "footnotes-global-warming-by-gas-and-source": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-footnotes/source.png",
-      "response": []
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "badges-well-being-by-age": {
       "baseComponent": "stimuliWithBadge",
@@ -94,7 +106,19 @@
     "footnotes-well-being-by-age": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-well-being-by-age/grp-footnotes/source.png",
-      "response": []
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "badges-co2-emissions-vs-gdp": {
       "baseComponent": "stimuliWithBadge",
@@ -119,7 +143,19 @@
     "footnotes-co2-emissions-vs-gdp": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-footnotes/source.png",
-      "response": []
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "badges-nasa-global-surface-temperature": {
       "baseComponent": "stimuliWithBadge",
@@ -144,7 +180,19 @@
     "footnotes-nasa-global-surface-temperature": {
       "type": "image",
       "path": "mind-the-badge/assets/nasa-global-surface-temperature/grp-footnotes/source.png",
-      "response": []
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "demographics-custom": {
       "type": "questionnaire",
