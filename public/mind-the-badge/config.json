@@ -196,13 +196,12 @@
     },
     "demographics-custom": {
       "type": "questionnaire",
-      "description": "Basic demographic questions including gender, age, and education",
+      "description": "Demographic and background questions for visualization research study",
       "response": [
         {
           "id": "gender",
           "prompt": "What is your **gender**?",
           "required": true,
-          "location": "sidebar",
           "type": "radio",
           "withOther": true,
           "options": [
@@ -216,27 +215,105 @@
         },
         {
           "id": "age",
-          "prompt": "What is your **age**?",
+          "prompt": "What is your **age group**?",
           "required": true,
-          "location": "sidebar",
-          "type": "numerical",
-          "placeholder": "Enter your age",
-          "min": 18,
-          "max": 100
+          "type": "radio",
+          "options": [
+            "18-24 years",
+            "25-34 years",
+            "35-44 years",
+            "45-54 years",
+            "55-64 years",
+            "65+ years",
+            "Prefer not to say"
+          ]
         },
         {
           "id": "education",
           "prompt": "What is the **highest degree or level of education** you have completed?",
           "required": true,
-          "location": "sidebar",
           "type": "radio",
           "withOther": true,
           "options": [
             "Less than high school",
             "High school diploma or equivalent",
-            "Bachelor's degree or equivalent",
-            "Master's degree or equivalent",
-            "Doctoral degree or equivalent"
+            "Some college (no degree)",
+            "Associate's degree",
+            "Bachelor's degree",
+            "Master's degree",
+            "Doctoral degree",
+            "Professional degree (MD, JD, etc.)"
+          ]
+        },
+        {
+          "id": "field-of-study",
+          "prompt": "What is your **primary field of study or work**?",
+          "required": true,
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Computer Science / Information Technology",
+            "Data Science / Statistics",
+            "Business / Economics",
+            "Social Sciences (Psychology, Sociology, etc.)",
+            "Natural Sciences (Biology, Chemistry, Physics, etc.)",
+            "Engineering",
+            "Arts / Design",
+            "Humanities",
+            "Healthcare / Medicine",
+            "Education",
+            "Other"
+          ]
+        },
+        {
+          "id": "data-visualization-experience",
+          "prompt": "How would you rate your **experience with data visualization**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "No experience",
+            "Beginner (some exposure)",
+            "Intermediate (regular use)",
+            "Advanced (create visualizations)",
+            "Expert (professional work)"
+          ]
+        },
+        {
+          "id": "chart-reading-frequency",
+          "prompt": "How often do you **read or interpret charts and graphs**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "Never",
+            "Rarely (few times per year)",
+            "Occasionally (few times per month)",
+            "Regularly (few times per week)",
+            "Frequently (daily or almost daily)"
+          ]
+        },
+        {
+          "id": "chart-creation-frequency",
+          "prompt": "How often do you **create charts and graphs**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "Never",
+            "Rarely (few times per year)",
+            "Occasionally (few times per month)",
+            "Regularly (few times per week)",
+            "Frequently (daily or almost daily)"
+          ]
+        },
+        {
+          "id": "color-vision",
+          "prompt": "Do you have any form of color‑vision deficiency (often called color‑blindness)?",
+          "required": false,
+          "type": "radio",
+          "options": [
+            "Yes",
+            "No",
+            "Not sure",
+            "Prefer not to say"
           ]
         }
       ]
@@ -341,8 +418,7 @@
       "type": "questionnaire",
       "description": "Perceptual Footprint – post-task survey",
       "response": [
-        { "id": "intro-clarity", "prompt": "The demo made it clear what visualization badges are.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
-        { "id": "noticed-in-task", "prompt": "Did you notice the small visual labels on the bottom right in some of the visualizations? ![badge examples](mind-the-badge/assets/badge-examples.png)", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "noticed-in-task", "prompt": "Did you notice the small visual labels on the bottom right in some of the visualizations? ![badge examples](mind-the-badge/assets/badge-examples.png)", "type": "radio", "options": ["Yes", "No"], "required": true },
 
         { "id": "salience-1", "prompt": "The visualization badges were easy to spot.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
         { "id": "salience-2", "prompt": "The visualization badges blended in so much that I almost missed them.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
