@@ -42,7 +42,7 @@ const BadgeRow: React.FC<BadgeRowProps> = ({ badges, onBadgeClick, selectedBadge
         <BinaryBadge
           badge={badge}
           size="medium"
-          variant="filled"
+          variant="outlined"
             rightIconKey=''
             chipColor={chipColor}
         />

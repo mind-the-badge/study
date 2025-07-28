@@ -65,35 +65,31 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
 
     return (
         <Box>
-            <Tooltip 
+            <Tooltip
                 title={description}
                 arrow
                 placement="top"
-                sx={{
-                    '& .MuiTooltip-tooltip': {
-                        background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.92) 0%, rgba(40, 40, 40, 0.92) 100%)',
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        fontSize: '0.875rem',
-                        fontWeight: 400,
-                        lineHeight: 1.4,
-                        padding: '10px 14px',
-                        borderRadius: '10px',
-                        boxShadow: '0 6px 24px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08)',
-                        maxWidth: '300px',
-                        textAlign: 'center',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        fontFamily: '"Apfel Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                        letterSpacing: '0.01em',
-                        '& .MuiTooltip-arrow': {
-                            color: 'rgba(20, 20, 20, 0.92)',
-                            filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08))',
-                        },
-                    },
-                }}
                 componentsProps={{
                     tooltip: {
                         sx: {
+                            background: 'linear-gradient(135deg, rgba(15, 15, 15, 0.88) 0%, rgba(30, 30, 30, 0.88) 100%)',
+                            color: 'rgba(255, 255, 255, 0.95)',
+                            fontSize: '0.8rem !important',
+                            fontWeight: 400,
+                            lineHeight: 1.4,
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06)',
+                            maxWidth: '200px',
+                            textAlign: 'center',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(255, 255, 255, 0.06)',
+                            fontFamily: '"Apfel Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                            letterSpacing: '0.02em',
+                            '& .MuiTooltip-arrow': {
+                                color: 'rgba(15, 15, 15, 0.88)',
+                                filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06))',
+                            },
                             animation: 'tooltipFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                             '@keyframes tooltipFadeIn': {
                                 '0%': {
