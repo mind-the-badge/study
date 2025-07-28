@@ -30,24 +30,24 @@ const BadgeRow: React.FC<BadgeRowProps> = ({ badges, onBadgeClick, selectedBadge
     {badges.map((badge, idx) => {
       const chipColor = intentColorMap[(badge.intent || '').toUpperCase()] || 'default';
       return (
-        <Box
-          key={badge.id || idx}
-          onClick={() => onBadgeClick(badge)}
-          sx={{
-            cursor: 'pointer',
-            border: badge.id === selectedBadgeId ? '2px solid #1976d2' : '2px solid transparent',
-            borderRadius: 2,
-            transition: 'border 0.2s',
-          }}
-        >
-          <BinaryBadge
-            badge={badge}
-            size="medium"
-            variant="filled"
+      <Box
+        key={badge.id || idx}
+        onClick={() => onBadgeClick(badge)}
+        sx={{
+          cursor: 'pointer',
+          border: badge.id === selectedBadgeId ? '2px solid #1976d2' : '2px solid transparent',
+          borderRadius: 2,
+          transition: 'border 0.2s',
+        }}
+      >
+        <BinaryBadge
+          badge={badge}
+          size="medium"
+          variant="filled"
             rightIconKey=''
             chipColor={chipColor}
-          />
-        </Box>
+        />
+      </Box>
       );
     })}
   </Box>

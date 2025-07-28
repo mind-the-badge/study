@@ -51,8 +51,7 @@
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
         "imageSrc": "experiment-1-visualization-badges/assets/stimuli1/BADGES-global-warming-by-gas-and-source.png",
-        "imageAlt": "Stimulus 1 with badges",
-        "badgeDataPath": "/experiment-1-visualization-badges/assets/stimuli1/global-warming-by-gas-and-source.json"
+        "detailedInformation": "/experiment-1-visualization-badges/assets/stimuli1/global-warming-by-gas-and-source.json"
       },
       "response": [
         {
@@ -90,18 +89,13 @@
         }
       ]
     },
-    "badge-onboarding": {
-      "type": "markdown",
-      "path": "experiment-1-visualization-badges/assets/badge-onboarding.md",
-      "response": []
-    },
     "condition-2-multiple-badges": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine this visualization and answer the questions about it and the badges.",
       "parameters": {
         "imageSrc": "experiment-1-visualization-badges/assets/sample-stimuli.png",
         "imageAlt": "Sample visualization stimuli",
-        "badgeDataPath": "experiment-1-visualization-badges/assets/badge-data.json"
+        "detailedInformation": "experiment-1-visualization-badges/assets/badge-data.json"
       },
       "response": [
         {
@@ -305,7 +299,6 @@
       "consent",
       "condition-1-task",
       "condition-1-badge-awareness",
-      "badge-onboarding",
       "condition-2-multiple-badges",
       "demographics-custom"
     ]

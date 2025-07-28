@@ -11,14 +11,13 @@ import { StimulusParams } from '../../../store/types';
 
 interface BadgeStimulusParams {
   imageSrc?: string;
-  imageAlt?: string;
-  badgeDataPath?: string;
+  detailedInformation?: string;
 }
 
 const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ parameters }) => {
   const imageSrc = parameters?.imageSrc;
-  const imageAlt = parameters?.imageAlt || 'Visualization stimuli';
-  const badgeDataPath = parameters?.badgeDataPath;
+  const imageAlt = 'Visualization stimuli';
+  const detailedInformation = parameters?.detailedInformation;
 
   const [badges, setBadges] = useState<BadgeData[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeData | null>(null);
@@ -26,7 +25,11 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
 
   // Load badge data from JSON file
   useEffect(() => {
-    fetch(badgeDataPath)
+    if (!detailedInformation) {
+      console.warn('[StimuliWithBadge] No detailedInformation path provided');
+      return;
+    }
+    fetch(detailedInformation)
       .then((res) => res.json())
       .then((data) => {
         let loadedBadges: BadgeData[] = [];
@@ -45,7 +48,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
         setBadges([]);
         console.error('[StimuliWithBadge] Error loading badge data:', err);
       });
-  }, [badgeDataPath]);
+  }, [detailedInformation]);
 
   const handleBadgeClick = (badge: BadgeData) => {
     setSelectedBadge(badge);
