@@ -53,7 +53,18 @@
         "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
       },
-      "response": []
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "footnotes-global-warming-by-gas-and-source": {
       "type": "image",
@@ -67,7 +78,18 @@
         "imageSrc": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
       },
-      "response": []
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "footnotes-well-being-by-age": {
       "type": "image",
@@ -81,7 +103,18 @@
         "imageSrc": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
       },
-      "response": []
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "footnotes-co2-emissions-vs-gdp": {
       "type": "image",
@@ -95,7 +128,18 @@
         "imageSrc": "mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/visualization-badges.json"
       },
-      "response": []
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
     },
     "footnotes-nasa-global-surface-temperature": {
       "type": "image",

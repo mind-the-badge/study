@@ -22,6 +22,7 @@ export function TextAreaInput({
     prompt,
     required,
     secondaryText,
+    ...additionalProps
   } = response;
 
   return (
@@ -39,6 +40,7 @@ export function TextAreaInput({
       description={secondaryText}
       radius="md"
       size="md"
+      {...additionalProps}
       {...answer}
         // This is necessary so the component doesnt switch from uncontrolled to controlled, which can cause issues.
       value={answer.value || ''}

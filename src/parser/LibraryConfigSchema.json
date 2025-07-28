@@ -1084,8 +1084,8 @@
       "type": "object"
     },
     "LongTextResponse": {
-      "additionalProperties": false,
-      "description": "The LongTextResponse interface is used to define the properties of a long text response. LongTextResponses render as a text area that accepts any text and can optionally have a placeholder. ```js { \"id\": \"q-name\", \"prompt\": \"What is your first name?\", \"location\": \"aboveStimulus\", \"type\": \"longText\", \"placeholder\": \"Please enter your first name\" } ```",
+      "additionalProperties": true,
+      "description": "The LongTextResponse interface is used to define the properties of a long text response. LongTextResponses render as a text area that accepts any text and can optionally have a placeholder. Additional properties like minRows, maxRows, autosize can be passed through to the Mantine Textarea component. ```js { \"id\": \"q-name\", \"prompt\": \"What is your first name?\", \"location\": \"aboveStimulus\", \"type\": \"longText\", \"placeholder\": \"Please enter your first name\", \"minRows\": 8, \"autosize\": true, \"maxRows\": 15 } ```",
       "properties": {
         "hidden": {
           "description": "Controls whether the response is hidden.",
@@ -1136,6 +1136,18 @@
         },
         "withDontKnow": {
           "description": "Renders the response with an option for \"I don't know\". This counts as a completed answer for the validation.",
+          "type": "boolean"
+        },
+        "minRows": {
+          "description": "Minimum number of rows for the textarea. Passed through to Mantine Textarea component.",
+          "type": "number"
+        },
+        "maxRows": {
+          "description": "Maximum number of rows for the textarea. Passed through to Mantine Textarea component.",
+          "type": "number"
+        },
+        "autosize": {
+          "description": "Whether the textarea should automatically resize. Passed through to Mantine Textarea component.",
           "type": "boolean"
         }
       },
