@@ -74,6 +74,20 @@
       "path": "mind-the-badge/assets/stimuli-well-being-by-age/grp-footnotes/source.png",
       "response": []
     },
+    "badges-co2-emissions-vs-gdp": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
+      },
+      "response": []
+    },
+    "footnotes-co2-emissions-vs-gdp": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-footnotes/source.png",
+      "response": []
+    },
     "demographics-custom": {
       "type": "questionnaire",
       "description": "Basic demographic questions including gender, age, and education",
@@ -227,6 +241,8 @@
       "footnotes-global-warming-by-gas-and-source",
       "badges-well-being-by-age",
       "footnotes-well-being-by-age",
+      "badges-co2-emissions-vs-gdp",
+      "footnotes-co2-emissions-vs-gdp",
       "demographics-custom"
     ]
   }
