@@ -34,6 +34,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
     trackDrawerOpen,
     trackDrawerClose,
     getTrackingData,
+    getSimplifiedTrackingData,
   } = useBadgeTracking();
 
   // Load badge data from JSON file
@@ -121,21 +122,19 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   // Save tracking data to answers when component unmounts or when requested
   useEffect(() => {
     return () => {
-      const trackingData = getTrackingData();
-      if (trackingData.interactions.length > 0) {
+      const simplifiedData = getSimplifiedTrackingData();
+      if (simplifiedData.totalClicks > 0 || simplifiedData.totalTimeSpent > 0) {
         setAnswer({
           status: true,
           answers: {
-            badgeTrackingData: JSON.stringify(trackingData),
-            totalBadgeInteractions: trackingData.interactions.length,
-            totalBadgeClicks: Object.values(trackingData.badgeClickCounts).reduce((sum, count) => sum + count, 0),
-            totalBadgeHoverTime: trackingData.totalTimeOnBadges,
-            badgeClickCounts: JSON.stringify(trackingData.badgeClickCounts),
+            badgeStats: JSON.stringify(simplifiedData.badgeStats),
+            totalBadgeClicks: simplifiedData.totalClicks,
+            totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
           },
         });
       }
     };
-  }, [getTrackingData, setAnswer]);
+  }, [getSimplifiedTrackingData, setAnswer]);
 
   return (
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
@@ -176,7 +175,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
 
       {/* Debug tracking display (only in development) */}
       {process.env.NODE_ENV === 'development' && (
-        <Box sx={{ position: 'fixed', top: 10, right: 10, zIndex: 1000 }}>
+        <Box sx={{ position: 'fixed', bottom: 10, left: 10, zIndex: 1000 }}>
           <button 
             onClick={() => setShowTrackingDebug(!showTrackingDebug)}
             style={{ 
@@ -193,7 +192,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
           </button>
           {showTrackingDebug && (
             <BadgeTrackingDisplay 
-              trackingData={getTrackingData()} 
+              trackingData={getSimplifiedTrackingData()} 
               showDetails={true} 
             />
           )}

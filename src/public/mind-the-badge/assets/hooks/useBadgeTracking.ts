@@ -19,6 +19,17 @@ export interface BadgeTrackingData {
   drawerOpenTimes: Record<string, number>;
 }
 
+// New simplified interface for cleaner data
+export interface SimplifiedBadgeTracking {
+  badgeStats: Record<string, {
+    badgeName: string;
+    clicks: number;
+    timeSpent: number; // in milliseconds
+  }>;
+  totalClicks: number;
+  totalTimeSpent: number;
+}
+
 export function useBadgeTracking() {
   const windowEvents = useWindowEvents();
   const trackingData = useRef<BadgeTrackingData>({
@@ -41,9 +52,9 @@ export function useBadgeTracking() {
 
     trackingData.current.interactions.push(interaction);
     
-    // Update click count
-    trackingData.current.badgeClickCounts[badgeId] = 
-      (trackingData.current.badgeClickCounts[badgeId] || 0) + 1;
+    // Update click count using badge name as key
+    trackingData.current.badgeClickCounts[badgeLabel] = 
+      (trackingData.current.badgeClickCounts[badgeLabel] || 0) + 1;
 
     // Add to window events for existing tracking system
     if (windowEvents && 'current' in windowEvents && windowEvents.current) {
@@ -57,7 +68,7 @@ export function useBadgeTracking() {
   // Track hover start
   const trackHoverStart = useCallback((badgeId: string, badgeLabel: string) => {
     const timestamp = Date.now();
-    trackingData.current.hoverStartTimes[badgeId] = timestamp;
+    trackingData.current.hoverStartTimes[badgeLabel] = timestamp; // Use badge name as key
 
     const interaction: BadgeInteraction = {
       badgeId,
@@ -72,7 +83,7 @@ export function useBadgeTracking() {
 
   // Track hover end
   const trackHoverEnd = useCallback((badgeId: string, badgeLabel: string) => {
-    const startTime = trackingData.current.hoverStartTimes[badgeId];
+    const startTime = trackingData.current.hoverStartTimes[badgeLabel]; // Use badge name as key
     if (startTime) {
       const endTime = Date.now();
       const duration = endTime - startTime;
@@ -89,7 +100,7 @@ export function useBadgeTracking() {
       trackingData.current.totalTimeOnBadges += duration;
       
       // Clean up start time
-      delete trackingData.current.hoverStartTimes[badgeId];
+      delete trackingData.current.hoverStartTimes[badgeLabel];
       
       console.log(`[BadgeTracking] Hover ended on: ${badgeLabel} (${badgeId}) - Duration: ${duration}ms`);
     }
@@ -98,7 +109,7 @@ export function useBadgeTracking() {
   // Track drawer open
   const trackDrawerOpen = useCallback((badgeId: string, badgeLabel: string) => {
     const timestamp = Date.now();
-    trackingData.current.drawerOpenTimes[badgeId] = timestamp;
+    trackingData.current.drawerOpenTimes[badgeLabel] = timestamp; // Use badge name as key
 
     const interaction: BadgeInteraction = {
       badgeId,
@@ -113,7 +124,7 @@ export function useBadgeTracking() {
 
   // Track drawer close
   const trackDrawerClose = useCallback((badgeId: string, badgeLabel: string) => {
-    const startTime = trackingData.current.drawerOpenTimes[badgeId];
+    const startTime = trackingData.current.drawerOpenTimes[badgeLabel]; // Use badge name as key
     if (startTime) {
       const endTime = Date.now();
       const duration = endTime - startTime;
@@ -130,7 +141,7 @@ export function useBadgeTracking() {
       trackingData.current.totalTimeOnBadges += duration;
       
       // Clean up start time
-      delete trackingData.current.drawerOpenTimes[badgeId];
+      delete trackingData.current.drawerOpenTimes[badgeLabel];
       
       console.log(`[BadgeTracking] Drawer closed for: ${badgeLabel} (${badgeId}) - Duration: ${duration}ms`);
     }
@@ -144,6 +155,71 @@ export function useBadgeTracking() {
       hoverStartTimes: { ...trackingData.current.hoverStartTimes },
       badgeClickCounts: { ...trackingData.current.badgeClickCounts },
       drawerOpenTimes: { ...trackingData.current.drawerOpenTimes },
+    };
+  }, []);
+
+  // Get simplified tracking data
+  const getSimplifiedTrackingData = useCallback((): SimplifiedBadgeTracking => {
+    const badgeStats: Record<string, { badgeName: string; clicks: number; timeSpent: number }> = {};
+    
+    // Initialize badge stats from click counts
+    Object.entries(trackingData.current.badgeClickCounts).forEach(([badgeName, clicks]) => {
+      badgeStats[badgeName] = {
+        badgeName,
+        clicks,
+        timeSpent: 0,
+      };
+    });
+
+    // Calculate time spent from interactions
+    trackingData.current.interactions.forEach(interaction => {
+      if (!badgeStats[interaction.badgeLabel]) {
+        badgeStats[interaction.badgeLabel] = {
+          badgeName: interaction.badgeLabel,
+          clicks: 0,
+          timeSpent: 0,
+        };
+      }
+
+      // Add time from hover and drawer interactions
+      if (interaction.duration) {
+        badgeStats[interaction.badgeLabel].timeSpent += interaction.duration;
+      }
+    });
+
+    // Add any ongoing hover times
+    Object.entries(trackingData.current.hoverStartTimes).forEach(([badgeName, startTime]) => {
+      if (!badgeStats[badgeName]) {
+        badgeStats[badgeName] = {
+          badgeName,
+          clicks: 0,
+          timeSpent: 0,
+        };
+      }
+      const currentTime = Date.now();
+      badgeStats[badgeName].timeSpent += (currentTime - startTime);
+    });
+
+    // Add any ongoing drawer times
+    Object.entries(trackingData.current.drawerOpenTimes).forEach(([badgeName, startTime]) => {
+      if (!badgeStats[badgeName]) {
+        badgeStats[badgeName] = {
+          badgeName,
+          clicks: 0,
+          timeSpent: 0,
+        };
+      }
+      const currentTime = Date.now();
+      badgeStats[badgeName].timeSpent += (currentTime - startTime);
+    });
+
+    const totalClicks = Object.values(badgeStats).reduce((sum, badge) => sum + badge.clicks, 0);
+    const totalTimeSpent = Object.values(badgeStats).reduce((sum, badge) => sum + badge.timeSpent, 0);
+
+    return {
+      badgeStats,
+      totalClicks,
+      totalTimeSpent,
     };
   }, []);
 
@@ -162,8 +238,8 @@ export function useBadgeTracking() {
   useEffect(() => {
     return () => {
       // End any ongoing hovers
-      Object.keys(trackingData.current.hoverStartTimes).forEach(badgeId => {
-        const startTime = trackingData.current.hoverStartTimes[badgeId];
+      Object.keys(trackingData.current.hoverStartTimes).forEach(badgeName => {
+        const startTime = trackingData.current.hoverStartTimes[badgeName];
         if (startTime) {
           const duration = Date.now() - startTime;
           trackingData.current.totalTimeOnBadges += duration;
@@ -179,6 +255,7 @@ export function useBadgeTracking() {
     trackDrawerOpen,
     trackDrawerClose,
     getTrackingData,
+    getSimplifiedTrackingData,
     resetTracking,
   };
 } 
