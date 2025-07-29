@@ -31,9 +31,12 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
     }
     
     // Resolve the path for both local and deployed environments
-    const resolvedPath = detailedInformation.startsWith('http') 
-      ? detailedInformation 
-      : `${PREFIX}${detailedInformation}`;
+    let resolvedPath = detailedInformation;
+    if (!detailedInformation.startsWith('http')) {
+      // Remove leading slash if present to avoid double slashes
+      const cleanPath = detailedInformation.startsWith('/') ? detailedInformation.slice(1) : detailedInformation;
+      resolvedPath = `${PREFIX}${cleanPath}`;
+    }
     
     console.log('[StimuliWithBadge] Fetching badge data from:', resolvedPath);
     
@@ -75,7 +78,13 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   // Compute the correct image path
   let resolvedImageSrc = '';
   if (imageSrc) {
-    resolvedImageSrc = imageSrc.startsWith('http') ? imageSrc : `${PREFIX}${imageSrc}`;
+    if (imageSrc.startsWith('http')) {
+      resolvedImageSrc = imageSrc;
+    } else {
+      // Remove leading slash if present to avoid double slashes
+      const cleanPath = imageSrc.startsWith('/') ? imageSrc.slice(1) : imageSrc;
+      resolvedImageSrc = `${PREFIX}${cleanPath}`;
+    }
     console.log('[StimuliWithBadge] Resolved imageSrc:', resolvedImageSrc);
   } else {
     console.warn('[StimuliWithBadge] No imageSrc provided');
