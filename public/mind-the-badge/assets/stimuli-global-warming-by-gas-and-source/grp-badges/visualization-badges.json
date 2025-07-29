@@ -26,6 +26,42 @@
       "type": "DATA",
       "intent": "WARNING",
       "detailedDescription": "detailed-badge-descriptions/badge-3-known-data-gap.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Open Data",
+      "description": "Underlying dataset is publicly available for download.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-open-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Aggregated Data",
+      "description": "CO₂, CH₄, and N₂O emissions are aggregated by fossil versus agriculture/land origins, which conceals individual gas-source trajectories in favour of total warming impact.",
+      "type": "CONTEXT",
+      "intent": "INFORMATION",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-aggregated-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Uncertainty Not Visualized",
+      "description": "The displayed curves are deterministic; statistical or methodological uncertainty in attributing temperature change is not communicated to viewers.",
+      "type": "DATA",
+      "intent": "WARNING",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-uncertainty-not-visualized.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "CC BY License",
+      "description": "Our World in Data permits reuse with attribution, explicitly encouraging redistribution and derivative work by others.",
+      "type": "CONTEXT",
+      "intent": "CONFIRMATION",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-cc-by-license.md"
     }
   ]
 }
