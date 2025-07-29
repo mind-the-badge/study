@@ -32,6 +32,50 @@
       "topics": ["Scale"],
       "link": "",
       "detailedDescription": "detailed-badge-descriptions/badge-3-truncated-axis.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Open Government Licence",
+      "description": "ONS explicitly licenses its outputs for free reuse, promoting transparency and encouraging derivative visualisations or reporting.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["License"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-open-government-licence.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Open Data",
+      "description": "ONS releases anonymised records under the Open Government Licence, enabling independent replication, re-analysis, or extension of the figures.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Access"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-open-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Uncertainty Visualised",
+      "description": "Sampling variability is made explicit, signalling to readers that apparent age differences may or may not be statistically significant.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Uncertainty"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-uncertainty-visualised.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "Outdated Data",
+      "description": "This visualization uses data from 2015, which is now 10 years old. Current patterns may have changed significantly since then.",
+      "type": "DATA",
+      "intent": "WARNING",
+      "topics": ["Timeliness"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-outdated-data.md"
     }
   ]
 } 
