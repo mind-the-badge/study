@@ -8,13 +8,15 @@ import type { BadgeData } from './BadgeInfoDrawer';
 import BadgeRow from './BadgeRow';
 import { PREFIX } from '../../../utils/Prefix';
 import { StimulusParams } from '../../../store/types';
+import { useBadgeTracking } from './hooks/useBadgeTracking';
+import { BadgeTrackingDisplay } from './components/BadgeTrackingDisplay';
 
 interface BadgeStimulusParams {
   imageSrc?: string;
   detailedInformation?: string;
   }
 
-const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ parameters }) => {
+const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ parameters, setAnswer }) => {
   const imageSrc = parameters?.imageSrc;
   const imageAlt = 'Visualization stimuli';
   const detailedInformation = parameters?.detailedInformation;
@@ -22,6 +24,17 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   const [badges, setBadges] = useState<BadgeData[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeData | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [showTrackingDebug, setShowTrackingDebug] = useState(false);
+
+  // Initialize badge tracking
+  const {
+    trackBadgeClick,
+    trackHoverStart,
+    trackHoverEnd,
+    trackDrawerOpen,
+    trackDrawerClose,
+    getTrackingData,
+  } = useBadgeTracking();
 
   // Load badge data from JSON file
   useEffect(() => {
@@ -61,9 +74,15 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       });
   }, [detailedInformation]);
 
-  const handleBadgeClick = (badge: BadgeData) => {
+  const handleBadgeClick = (badge: BadgeData, coordinates?: [number, number]) => {
+    // Track the badge click
+    trackBadgeClick(badge.id, badge.label, coordinates);
+    
     setSelectedBadge(badge);
     setIsDrawerOpen(true);
+    
+    // Track drawer open
+    trackDrawerOpen(badge.id, badge.label);
   };
 
   // Extract base path from detailedInformation for relative markdown links
@@ -99,6 +118,25 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
     }
   }, [badges]);
 
+  // Save tracking data to answers when component unmounts or when requested
+  useEffect(() => {
+    return () => {
+      const trackingData = getTrackingData();
+      if (trackingData.interactions.length > 0) {
+        setAnswer({
+          status: true,
+          answers: {
+            badgeTrackingData: JSON.stringify(trackingData),
+            totalBadgeInteractions: trackingData.interactions.length,
+            totalBadgeClicks: Object.values(trackingData.badgeClickCounts).reduce((sum, count) => sum + count, 0),
+            totalBadgeHoverTime: trackingData.totalTimeOnBadges,
+            badgeClickCounts: JSON.stringify(trackingData.badgeClickCounts),
+          },
+        });
+      }
+    };
+  }, [getTrackingData, setAnswer]);
+
   return (
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
       {/* Main stimuli image */}
@@ -115,15 +153,52 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       )}
 
       {/* Badges row below the image */}
-      <BadgeRow badges={badges} onBadgeClick={handleBadgeClick} selectedBadgeId={selectedBadge?.id || null} />
+      <BadgeRow 
+        badges={badges} 
+        onBadgeClick={handleBadgeClick} 
+        selectedBadgeId={selectedBadge?.id || null}
+        onBadgeHoverStart={trackHoverStart}
+        onBadgeHoverEnd={trackHoverEnd}
+      />
 
       {/* Badge Information Panel */}
       <BadgeInfoDrawer
         badge={selectedBadge}
         open={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
+        onClose={() => {
+          if (selectedBadge) {
+            trackDrawerClose(selectedBadge.id, selectedBadge.label);
+          }
+          setIsDrawerOpen(false);
+        }}
         basePath={getBasePath()}
       />
+
+      {/* Debug tracking display (only in development) */}
+      {process.env.NODE_ENV === 'development' && (
+        <Box sx={{ position: 'fixed', top: 10, right: 10, zIndex: 1000 }}>
+          <button 
+            onClick={() => setShowTrackingDebug(!showTrackingDebug)}
+            style={{ 
+              padding: '8px 12px', 
+              background: '#007bff', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            {showTrackingDebug ? 'Hide' : 'Show'} Tracking
+          </button>
+          {showTrackingDebug && (
+            <BadgeTrackingDisplay 
+              trackingData={getTrackingData()} 
+              showDetails={true} 
+            />
+          )}
+        </Box>
+      )}
     </Box>
   );
 };

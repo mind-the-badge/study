@@ -6,8 +6,10 @@ import { BiSolidInfoSquare } from "react-icons/bi";
 
 interface BadgeRowProps {
   badges: BadgeData[];
-  onBadgeClick: (badge: BadgeData) => void;
+  onBadgeClick: (badge: BadgeData, coordinates?: [number, number]) => void;
   selectedBadgeId: string | null;
+  onBadgeHoverStart?: (badgeId: string, badgeLabel: string) => void;
+  onBadgeHoverEnd?: (badgeId: string, badgeLabel: string) => void;
 }
 
 const intentColorMap: Record<string, string> = {
@@ -23,7 +25,13 @@ const intentPriority: Record<string, number> = {
   WARNING: 3,
 };
 
-const BadgeRow: React.FC<BadgeRowProps> = ({ badges, onBadgeClick, selectedBadgeId }) => {
+const BadgeRow: React.FC<BadgeRowProps> = ({ 
+  badges, 
+  onBadgeClick, 
+  selectedBadgeId, 
+  onBadgeHoverStart, 
+  onBadgeHoverEnd 
+}) => {
   // Sort badges by intent priority, then by label
   const sortedBadges = [...badges].sort((a, b) => {
     const intentA = (a.intent || '').toUpperCase();
@@ -87,7 +95,9 @@ const BadgeRow: React.FC<BadgeRowProps> = ({ badges, onBadgeClick, selectedBadge
             return (
               <Box
                 key={badge.id || `${rowIndex}-${idx}`}
-                onClick={() => onBadgeClick(badge)}
+                onClick={(e) => onBadgeClick(badge, [e.clientX, e.clientY])}
+                onMouseEnter={() => onBadgeHoverStart?.(badge.id, badge.label)}
+                onMouseLeave={() => onBadgeHoverEnd?.(badge.id, badge.label)}
                 sx={{
                   cursor: 'pointer',
                   borderRadius: 2,
