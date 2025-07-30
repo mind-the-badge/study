@@ -161,8 +161,8 @@
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
-        "imageSrc": "mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/source.png",
-        "detailedInformation": "/mind-the-badge/assets/nasa-global-surface-temperature/grp-badges/visualization-badges.json"
+        "imageSrc": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/visualization-badges.json"
       },
       "response": [
         {
@@ -179,7 +179,7 @@
     },
     "footnotes-nasa-global-surface-temperature": {
       "type": "image",
-      "path": "mind-the-badge/assets/nasa-global-surface-temperature/grp-footnotes/source.png",
+      "path": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
       "response": [
         {
