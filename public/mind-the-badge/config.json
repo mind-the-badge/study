@@ -194,6 +194,43 @@
         }
       ]
     },
+    "badges-global-warming-projection": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "footnotes-global-warming-projection": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-global-warming-projection/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 8,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
     "demographics-custom": {
       "type": "questionnaire",
       "description": "Demographic and background questions for visualization research study",
@@ -457,6 +494,8 @@
       "footnotes-co2-emissions-vs-gdp",
       "badges-nasa-global-surface-temperature",
       "footnotes-nasa-global-surface-temperature",
+      "badges-global-warming-projection",
+      "footnotes-global-warming-projection",
       "demographics-custom",
       "perceptual-footprint"
     ]

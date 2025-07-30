@@ -1,0 +1,70 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Data Source Disclosed",
+      "description": "The chart identifies every primary source—UNEP Emissions Gap Report, Climate Action Tracker, International Energy Agency analyses, Climate Resource modelling, plus the five IPCC SSP pathways—so viewers can trace each bar to its original study.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Source"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-data-source-disclosed.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "Contains Predictions",
+      "description": "Every bar shows model-based, scenario-dependent future warming estimates rather than observations, signalling that numbers rely on underlying assumptions and may evolve as models or pledges change.",
+      "type": "ANALYSIS",
+      "intent": "WARNING",
+      "topics": ["Prediction"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-contains-predictions.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Uncertainty Shown",
+      "description": "Inside each column the central 50th-percentile warming figure is accompanied by an explicit uncertainty range, conveying variability without separate error bars.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Uncertainty"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-uncertainty-shown.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Data Up-to-Date",
+      "description": "Figures use the most recent publicly released data available on 9 Nov 2021; policy revisions or new pledges announced after that date are not yet reflected.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Timeliness"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-data-up-to-date.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Methodology Disclosed",
+      "description": "Carbon Brief harmonised all sources to the same pre-industrial baseline and reports median outcomes only; any conversions made for comparability are detailed in the accompanying article.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Methodology"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-methodology-disclosed.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Scenario Labels",
+      "description": "The visualization clearly separates IPCC radiative-forcing pathways (SSP5-8.5 → SSP1-1.9) from current-policy, 2030-pledge, and net-zero-plus-pledge projections, helping readers interpret each colour grouping.",
+      "type": "VISUAL ENCODING",
+      "intent": "CONFIRMATION",
+      "topics": ["Labels"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-scenario-labels.md"
+    }
+  ]
+} 
