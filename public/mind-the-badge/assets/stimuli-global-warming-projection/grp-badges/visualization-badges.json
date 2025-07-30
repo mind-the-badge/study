@@ -35,17 +35,6 @@
     },
     {
       "badgeType": "BINARY",
-      "id": "4",
-      "label": "Data Up-to-Date",
-      "description": "Figures use the most recent publicly released data available on 9 Nov 2021; policy revisions or new pledges announced after that date are not yet reflected.",
-      "type": "DATA",
-      "intent": "CONFIRMATION",
-      "topics": ["Timeliness"],
-      "link": "",
-      "detailedDescription": "detailed-badge-descriptions/badge-4-data-up-to-date.md"
-    },
-    {
-      "badgeType": "BINARY",
       "id": "5",
       "label": "Methodology Disclosed",
       "description": "Carbon Brief harmonised all sources to the same pre-industrial baseline and reports median outcomes only; any conversions made for comparability are detailed in the accompanying article.",
@@ -65,6 +54,17 @@
       "topics": ["Labels"],
       "link": "",
       "detailedDescription": "detailed-badge-descriptions/badge-6-scenario-labels.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "Pre-Industrial Baseline",
+      "description": "All temperature anomalies are expressed relative to the 1850–1900 global mean. When comparing with charts that use 1990 or present-day references, adjust for the ≈ 1.1 °C of warming already realised since the pre-industrial era.",
+      "type": "INFORMATION",
+      "intent": "INFORMATION",
+      "topics": ["Baseline"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-information.md"
     }
   ]
 } 
