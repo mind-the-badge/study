@@ -69,6 +69,9 @@ const BadgeBase: React.FC<BadgeBaseProps> = ({
                 title={description}
                 arrow
                 placement="top"
+                enterDelay={200}
+                enterNextDelay={200}
+                leaveDelay={0}
                 componentsProps={{
                     tooltip: {
                         sx: {

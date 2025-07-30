@@ -37,7 +37,7 @@
       "badgeType": "BINARY",
       "id": "4",
       "label": "Overlapping Elements",
-      "description": "Dense regions (e.g., South‑/East‑Asia) contain many circles that occlude one another and may hide smaller nations.",
+      "description": "Big-population bubbles (China, India, USA) often cover smaller neighbours, hiding their true positions. Labels and dots can also stack, especially around $5 000–$20 000 GDP per capita.",
       "type": "VISUAL ENCODING",
       "intent": "WARNING",
       "topics": ["Clarity"],
@@ -70,9 +70,9 @@
       "badgeType": "BINARY",
       "id": "7",
       "label": "Log Scale Used",
-      "description": "Both axes are logarithmic so that values spanning several orders of magnitude fit on one chart.",
+      "description": "Both axes use logarithmic spacing, compressing low values and expanding the high end. Distances represent multiplicative, not additive, differences.",
       "type": "VISUAL ENCODING",
-      "intent": "INFORMATION",
+      "intent": "WARNING",
       "topics": ["Scale"],
       "link": "",
       "detailedDescription": "detailed-badge-descriptions/badge-7-log-scale-used.md"
@@ -100,4 +100,4 @@
       "detailedDescription": "detailed-badge-descriptions/badge-9-data-source-disclosed.md"
     }
   ]
-} 
+}
