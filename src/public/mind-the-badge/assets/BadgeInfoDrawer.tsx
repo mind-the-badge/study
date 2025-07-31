@@ -3,6 +3,7 @@ import { Box, Drawer, Typography, IconButton, Chip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ReactMarkdown from 'react-markdown';
 import useMarkdown from './useMarkdown';
+import { PREFIX } from '../../../utils/Prefix';
 
 export interface BadgeData {
   badgeType: string;
@@ -29,13 +30,26 @@ interface BadgeInfoDrawerProps {
 const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose, basePath }) => {
   const getFullMarkdownPath = (detailedDescription?: string) => {
     if (!detailedDescription) return undefined;
-    if (detailedDescription.startsWith('/')) {
+    
+    // If it's already a full URL, return as is
+    if (detailedDescription.startsWith('http')) {
       return detailedDescription;
     }
-    if (basePath) {
-      return `${basePath}/${detailedDescription}`;
+    
+    // If it starts with a slash, it's an absolute path
+    if (detailedDescription.startsWith('/')) {
+      return `${PREFIX}${detailedDescription}`;
     }
-    return detailedDescription;
+    
+    // If we have a basePath, construct the full path
+    if (basePath) {
+      // Remove leading slash from basePath if present
+      const cleanBasePath = basePath.startsWith('/') ? basePath.slice(1) : basePath;
+      return `${PREFIX}${cleanBasePath}/${detailedDescription}`;
+    }
+    
+    // Fallback: try with PREFIX
+    return `${PREFIX}${detailedDescription}`;
   };
 
   const { content, loading, error } = useMarkdown(getFullMarkdownPath(badge?.detailedDescription));

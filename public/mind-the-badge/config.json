@@ -46,7 +46,7 @@
       "path": "mind-the-badge/assets/consent.md",
       "response": []
     },
-    "badges-global-warming-by-gas-and-source": {
+    "1_badges-global-warming-by-gas-and-source": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
@@ -66,7 +66,7 @@
         }
       ]
     },
-    "footnotes-global-warming-by-gas-and-source": {
+    "1_footnotes-global-warming-by-gas-and-source": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
@@ -83,7 +83,7 @@
         }
       ]
     },
-    "badges-well-being-by-age": {
+    "2_badges-well-being-by-age": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
@@ -103,7 +103,7 @@
         }
       ]
     },
-    "footnotes-well-being-by-age": {
+    "2_footnotes-well-being-by-age": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-well-being-by-age/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
@@ -120,7 +120,7 @@
         }
       ]
     },
-    "badges-co2-emissions-vs-gdp": {
+    "3_badges-co2-emissions-vs-gdp": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
@@ -140,7 +140,7 @@
         }
       ]
     },
-    "footnotes-co2-emissions-vs-gdp": {
+    "3_footnotes-co2-emissions-vs-gdp": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
@@ -157,7 +157,7 @@
         }
       ]
     },
-    "badges-nasa-global-surface-temperature": {
+    "4_badges-nasa-global-surface-temperature": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
@@ -177,7 +177,7 @@
         }
       ]
     },
-    "footnotes-nasa-global-surface-temperature": {
+    "4_footnotes-nasa-global-surface-temperature": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
@@ -194,7 +194,7 @@
         }
       ]
     },
-    "badges-global-warming-projection": {
+    "5_badges-global-warming-projection": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
       "parameters": {
@@ -214,7 +214,7 @@
         }
       ]
     },
-    "footnotes-global-warming-projection": {
+    "5_footnotes-global-warming-projection": {
       "type": "image",
       "path": "mind-the-badge/assets/stimuli-global-warming-projection/grp-footnotes/source.png",
       "nextButtonLocation": "sidebar",
@@ -486,16 +486,16 @@
     "components": [
       "introduction",
       "consent",
-      "badges-global-warming-by-gas-and-source",
-      "footnotes-global-warming-by-gas-and-source",
-      "badges-well-being-by-age",
-      "footnotes-well-being-by-age",
-      "badges-co2-emissions-vs-gdp",
-      "footnotes-co2-emissions-vs-gdp",
-      "badges-nasa-global-surface-temperature",
-      "footnotes-nasa-global-surface-temperature",
-      "badges-global-warming-projection",
-      "footnotes-global-warming-projection",
+      "1_badges-global-warming-by-gas-and-source",
+      "1_footnotes-global-warming-by-gas-and-source",
+      "2_badges-well-being-by-age",
+      "2_footnotes-well-being-by-age",
+      "3_badges-co2-emissions-vs-gdp",
+      "3_footnotes-co2-emissions-vs-gdp",
+      "4_badges-nasa-global-surface-temperature",
+      "4_footnotes-nasa-global-surface-temperature",
+      "5_badges-global-warming-projection",
+      "5_footnotes-global-warming-projection",
       "demographics-custom",
       "perceptual-footprint"
     ]
