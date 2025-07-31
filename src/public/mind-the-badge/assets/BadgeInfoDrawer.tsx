@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Box, Drawer, Typography, IconButton, Chip } from '@mui/material';
+import { Box, Drawer, Typography, IconButton, Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ReactMarkdown from 'react-markdown';
 import useMarkdown from './useMarkdown';
@@ -321,7 +321,59 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
                   fontWeight: 600,
                 },
               }}>
-                <ReactMarkdown>{content}</ReactMarkdown>
+                <ReactMarkdown
+                  components={{
+                    table: ({ children, ...props }) => (
+                      <Table {...props} sx={{ width: '100%', borderCollapse: 'collapse' }}>
+                        {children}
+                      </Table>
+                    ),
+                    thead: ({ children, ...props }) => (
+                      <TableHead {...props}>
+                        {children}
+                      </TableHead>
+                    ),
+                    tbody: ({ children, ...props }) => (
+                      <TableBody {...props}>
+                        {children}
+                      </TableBody>
+                    ),
+                    tr: ({ children, ...props }) => (
+                      <TableRow {...props}>
+                        {children}
+                      </TableRow>
+                    ),
+                    th: ({ children, align, ...props }) => (
+                      <TableCell 
+                        {...props} 
+                        component="th" 
+                        align={align === 'center' ? 'center' : align === 'right' ? 'right' : 'left'}
+                        sx={{ 
+                          border: '1px solid #e5e7eb',
+                          padding: '8px 12px',
+                          backgroundColor: '#f9fafb',
+                          fontWeight: 600,
+                        }}
+                      >
+                        {children}
+                      </TableCell>
+                    ),
+                    td: ({ children, align, ...props }) => (
+                      <TableCell 
+                        {...props} 
+                        align={align === 'center' ? 'center' : align === 'right' ? 'right' : 'left'}
+                        sx={{ 
+                          border: '1px solid #e5e7eb',
+                          padding: '8px 12px',
+                        }}
+                      >
+                        {children}
+                      </TableCell>
+                    ),
+                  }}
+                >
+                  {content}
+                </ReactMarkdown>
               </Box>
             )
           ) : (

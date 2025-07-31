@@ -1,25 +1,29 @@
-**Unit**
+## What does **1 °C of warming from a gas** really mean?
 
-* All values are expressed in **degrees Celsius (°C) of global‑mean surface temperature change** relative to the pre‑industrial baseline (\~1850).
-* 0.01 °C on the vertical axis means that cumulative emissions have warmed the planet by one‑hundredth of a degree.
+The chart converts **cumulative emissions** of three greenhouse gases into an **equivalent rise in global-mean surface temperature**:
 
-**Stacked coloured areas**
+### **CO₂ (Carbon Dioxide)**
+- **Main sources:** Coal, oil, gas; deforestation
+- **Typical lifetime:** Centuries – millennia
+- **Warming power:** baseline
 
-Each band shows the °C warming attributable to a specific **gas × source** pair:
+### **CH₄ (Methane)**
+- **Main sources:** Fossil leaks, livestock, rice
+- **Typical lifetime:** ~12 years
+- **Warming power:** ×28–34 vs CO₂
 
-* **CO₂ – fossil fuel** (dark red)
-* **CO₂ – land & agriculture** (crimson)
-* **CH₄ – fossil** (blue)
-* **CH₄ – land & agriculture** (navy)
-* **N₂O – fossil** (tan)
-* **N₂O – land & agriculture** (brown)
+### **N₂O (Nitrous Oxide)**
+- **Main sources:** Fertiliser use, industry
+- **Typical lifetime:** ~114 years
+- **Warming power:** ×265–300 vs CO₂
 
-**Source labels**
+*100-year Global Warming Potential (IPCC AR6)
 
-* **Fossil**  ➟  Emissions linked to the extraction, processing, transport, and combustion of **coal, oil, and natural gas** (e.g., methane leaks from gas wells, CO₂ from power plants).
-* **Land & agriculture**  ➟  Emissions from **deforestation, soil disturbance, fertiliser use, livestock, rice paddies**, and other land‑based activities.
+---
 
-At any point in time:
+### Fossil vs Land–Agriculture layers
+* **Fossil** — emissions tied to extracting, burning or processing coal, oil and gas.
+* **Land & agriculture** — emissions from land-use change, soils, livestock, rice paddies and fertilisers.
 
-* The **height of an individual band** = that pair’s accumulated warming in °C.
-* The **top of the stack** = total warming in °C from all six sources.
+Each coloured band shows the **°C already added** by that gas-source pair since 1851.  
+Add the bands vertically to read the **total historical warming** from all six sources. :contentReference[oaicite:2]{index=2}

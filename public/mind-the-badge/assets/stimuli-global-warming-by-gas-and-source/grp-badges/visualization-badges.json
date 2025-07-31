@@ -4,7 +4,7 @@
       "badgeType": "BINARY",
       "id": "1",
       "label": "Data Sources Disclosed",
-      "description": "Data Source Description",
+      "description": "Uses OWID ‘National contributions to climate change’ dataset (Jones et al., 2023) with linked raw files & code.",
       "type": "DATA",
       "intent": "CONFIRMATION",
       "detailedDescription": "detailed-badge-descriptions/badge-1-data-sources-disclosed.md"
@@ -13,7 +13,7 @@
       "badgeType": "BINARY",
       "id": "2",
       "label": "Complicated Units",
-      "description": "Complicated Units Description",
+      "description": "Shows °C warming from three greenhouse gases—CO₂, CH₄, N₂O—stacked by fossil vs land-agriculture sources.",
       "type": "CONTEXT",
       "intent": "INFORMATION",
       "detailedDescription": "detailed-badge-descriptions/badge-2-complicated-units.md"
@@ -22,7 +22,7 @@
       "badgeType": "BINARY",
       "id": "3",
       "label": "Known Data-Gap",
-      "description": "This does not include cooling impacts from sulphur dioxide and aerosols, so the net warming can be lower.",
+      "description": "Aerosol cooling is excluded, so totals slightly over-state net warming.",
       "type": "DATA",
       "intent": "WARNING",
       "detailedDescription": "detailed-badge-descriptions/badge-3-known-data-gap.md"
@@ -31,7 +31,7 @@
       "badgeType": "BINARY",
       "id": "4",
       "label": "Open Data",
-      "description": "Underlying dataset is publicly available for download.",
+      "description": "Full dataset and scripts are freely downloadable from OWID’s GitHub.",
       "type": "DATA",
       "intent": "CONFIRMATION",
       "detailedDescription": "detailed-badge-descriptions/badge-4-open-data.md"
@@ -40,7 +40,7 @@
       "badgeType": "BINARY",
       "id": "5",
       "label": "Aggregated Data",
-      "description": "CO₂, CH₄, and N₂O emissions are aggregated by fossil versus agriculture/land origins, which conceals individual gas-source trajectories in favour of total warming impact.",
+      "description": "Stacks six gas-source layers; values are cumulative since 1851, so annual or sector-level detail is hidden..",
       "type": "CONTEXT",
       "intent": "INFORMATION",
       "detailedDescription": "detailed-badge-descriptions/badge-5-aggregated-data.md"
@@ -49,7 +49,7 @@
       "badgeType": "BINARY",
       "id": "6",
       "label": "Uncertainty Not Visualized",
-      "description": "The displayed curves are deterministic; statistical or methodological uncertainty in attributing temperature change is not communicated to viewers.",
+      "description": "Lines are best estimates; statistical and model uncertainties aren’t shown.",
       "type": "DATA",
       "intent": "WARNING",
       "detailedDescription": "detailed-badge-descriptions/badge-6-uncertainty-not-visualized.md"
@@ -58,7 +58,7 @@
       "badgeType": "BINARY",
       "id": "7",
       "label": "CC BY License",
-      "description": "Our World in Data permits reuse with attribution, explicitly encouraging redistribution and derivative work by others.",
+      "description": "Chart and data are CC BY 4.0—reuse is fine with attribution to OWID.",
       "type": "CONTEXT",
       "intent": "CONFIRMATION",
       "detailedDescription": "detailed-badge-descriptions/badge-7-cc-by-license.md"
