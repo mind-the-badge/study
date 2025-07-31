@@ -20,9 +20,9 @@ const intentColorMap: Record<string, string> = {
 
 // Define intent priority for sorting
 const intentPriority: Record<string, number> = {
-  CONFIRMATION: 1,
+  WARNING: 1,
   INFORMATION: 2,
-  WARNING: 3,
+  CONFIRMATION: 3,
 };
 
 const BadgeRow: React.FC<BadgeRowProps> = ({ 
