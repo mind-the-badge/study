@@ -46,6 +46,11 @@
       "path": "mind-the-badge/assets/consent.md",
       "response": []
     },
+    "example": {
+      "type": "markdown",
+      "path": "mind-the-badge/assets/example.md",
+      "response": []
+    },
     "1_badges-global-warming-by-gas-and-source": {
       "baseComponent": "stimuliWithBadge",
       "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
@@ -486,6 +491,7 @@
     "components": [
       "introduction",
       "consent",
+      "example",
       "1_badges-global-warming-by-gas-and-source",
       "1_footnotes-global-warming-by-gas-and-source",
       "2_badges-well-being-by-age",
