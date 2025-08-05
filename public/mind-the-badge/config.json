@@ -1,15 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/StudyConfigSchema.json",
   "studyMetadata": {
-    "title": "Experiment 1 - Visualization Badges",
-    "version": "1.0.0",
+    "title": "Experiment",
+    "version": "0.0.0",
     "authors": [
-      "Your Name"
+      "Valentin Edelsbrunner"
     ],
     "date": "2025-01-28",
     "description": "A study examining visualization badges.",
     "organizations": [
-      "Your Organization"
+      "inria"
     ]
   },
   "uiConfig": {
@@ -53,7 +53,7 @@
     },
     "1_badges-global-warming-by-gas-and-source": {
       "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
@@ -61,11 +61,11 @@
       "response": [
         {
           "id": "main-observations",
-          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "prompt": "**My Observations:**",
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -82,7 +82,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -90,7 +90,7 @@
     },
     "2_badges-well-being-by-age": {
       "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
@@ -102,7 +102,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -119,7 +119,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -127,7 +127,7 @@
     },
     "3_badges-co2-emissions-vs-gdp": {
       "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
@@ -139,7 +139,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -156,7 +156,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -164,7 +164,7 @@
     },
     "4_badges-nasa-global-surface-temperature": {
       "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/visualization-badges.json"
@@ -176,7 +176,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -193,7 +193,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -201,7 +201,7 @@
     },
     "5_badges-global-warming-projection": {
       "baseComponent": "stimuliWithBadge",
-      "instruction": "Please examine the visualization below and answer the following questions about the data shown. Focus on the information presented in the chart.",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
       "parameters": {
         "imageSrc": "mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/source.png",
         "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/visualization-badges.json"
@@ -213,7 +213,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -230,7 +230,7 @@
           "location": "sidebar",
           "type": "longText",
           "placeholder": "Please describe your main observations from the visualization...",
-          "minRows": 8,
+          "minRows": 15,
           "autosize": true,
           "maxRows": 15
         }
@@ -503,7 +503,8 @@
       "5_badges-global-warming-projection",
       "5_footnotes-global-warming-projection",
       "demographics-custom",
-      "perceptual-footprint"
+      "perceptual-footprint",
+      "sus-contextualized"
     ]
   }
 }
