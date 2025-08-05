@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import useMarkdown from './useMarkdown';
 import { PREFIX } from '../../../utils/Prefix';
 import BinaryBadge from './badge-components/BinaryBadge';
+import { useBadgeTracking } from './hooks/useBadgeTracking';
 
 // AI Transparency Badges Data
 const AI_TRANSPARENCY_BADGES = {
@@ -12,7 +13,7 @@ const AI_TRANSPARENCY_BADGES = {
     badgeType: "BINARY",
     id: "ai-derived-insight",
     label: "AI-Derived Insight",
-    description: "The detailed description in this drawer was generated using AI assistance.",
+    description: "This detailed information was generated using AI assistance.",
     type: "DATA",
     intent: "WARNING",
     topics: ["AI"],
@@ -22,7 +23,7 @@ const AI_TRANSPARENCY_BADGES = {
     badgeType: "BINARY",
     id: "human-verified-ai",
     label: "Human-Verified AI",
-    description: "Two visualization experts have verified and validated the AI-generated content in this drawer.",
+    description: "Two visualization experts have verified and validated this AI-generated content.",
     type: "DATA",
     intent: "CONFIRMATION",
     topics: ["AI"],
@@ -53,6 +54,8 @@ interface BadgeInfoDrawerProps {
 }
 
 const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose, basePath }) => {
+  const { trackBadgeClick, trackHoverStart, trackHoverEnd } = useBadgeTracking();
+  
   const getFullMarkdownPath = (detailedDescription?: string) => {
     if (!detailedDescription) return undefined;
 
@@ -477,22 +480,36 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
             justifyContent: 'flex-end',
             gap: 1
           }}>
-            <BinaryBadge
-              badge={AI_TRANSPARENCY_BADGES["ai-derived-insight"]}
-              size="medium"
-              variant="outlined"
-              chipColor="warning"
-              leftIconKey="iconIntent"
-              rightIconKey=""
-            />
-            <BinaryBadge
-              badge={AI_TRANSPARENCY_BADGES["human-verified-ai"]}
-              size="medium"
-              variant="outlined"
-              chipColor="success"
-              leftIconKey="iconIntent"
-              rightIconKey=""
-            />
+            <Box
+              onClick={(e) => trackBadgeClick("ai-derived-insight", "AI-Derived Insight", [e.clientX, e.clientY], AI_TRANSPARENCY_BADGES["ai-derived-insight"])}
+              onMouseEnter={() => trackHoverStart("ai-derived-insight", "AI-Derived Insight", AI_TRANSPARENCY_BADGES["ai-derived-insight"])}
+              onMouseLeave={() => trackHoverEnd("ai-derived-insight", "AI-Derived Insight", AI_TRANSPARENCY_BADGES["ai-derived-insight"])}
+              sx={{ cursor: 'pointer' }}
+            >
+              <BinaryBadge
+                badge={AI_TRANSPARENCY_BADGES["ai-derived-insight"]}
+                size="medium"
+                variant="outlined"
+                chipColor="warning"
+                leftIconKey="iconIntent"
+                rightIconKey=""
+              />
+            </Box>
+            <Box
+              onClick={(e) => trackBadgeClick("human-verified-ai", "Human-Verified AI", [e.clientX, e.clientY], AI_TRANSPARENCY_BADGES["human-verified-ai"])}
+              onMouseEnter={() => trackHoverStart("human-verified-ai", "Human-Verified AI", AI_TRANSPARENCY_BADGES["human-verified-ai"])}
+              onMouseLeave={() => trackHoverEnd("human-verified-ai", "Human-Verified AI", AI_TRANSPARENCY_BADGES["human-verified-ai"])}
+              sx={{ cursor: 'pointer' }}
+            >
+              <BinaryBadge
+                badge={AI_TRANSPARENCY_BADGES["human-verified-ai"]}
+                size="medium"
+                variant="outlined"
+                chipColor="success"
+                leftIconKey="iconIntent"
+                rightIconKey=""
+              />
+            </Box>
           </Box>
         )}
       </Box>
