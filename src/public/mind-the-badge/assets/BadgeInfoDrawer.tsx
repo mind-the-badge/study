@@ -4,6 +4,31 @@ import CloseIcon from '@mui/icons-material/Close';
 import ReactMarkdown from 'react-markdown';
 import useMarkdown from './useMarkdown';
 import { PREFIX } from '../../../utils/Prefix';
+import BinaryBadge from './badge-components/BinaryBadge';
+
+// AI Transparency Badges Data
+const AI_TRANSPARENCY_BADGES = {
+  "ai-derived-insight": {
+    badgeType: "BINARY",
+    id: "ai-derived-insight",
+    label: "AI-Derived Insight",
+    description: "The detailed description in this drawer was generated using AI assistance.",
+    type: "DATA",
+    intent: "WARNING",
+    topics: ["AI"],
+    link: ""
+  },
+  "human-verified-ai": {
+    badgeType: "BINARY",
+    id: "human-verified-ai",
+    label: "Human-Verified AI",
+    description: "Two visualization experts have verified and validated the AI-generated content in this drawer.",
+    type: "DATA",
+    intent: "CONFIRMATION",
+    topics: ["AI"],
+    link: ""
+  }
+};
 
 export interface BadgeData {
   badgeType: string;
@@ -30,24 +55,24 @@ interface BadgeInfoDrawerProps {
 const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose, basePath }) => {
   const getFullMarkdownPath = (detailedDescription?: string) => {
     if (!detailedDescription) return undefined;
-    
+
     // If it's already a full URL, return as is
     if (detailedDescription.startsWith('http')) {
       return detailedDescription;
     }
-    
+
     // If it starts with a slash, it's an absolute path
     if (detailedDescription.startsWith('/')) {
       return `${PREFIX}${detailedDescription}`;
     }
-    
+
     // If we have a basePath, construct the full path
     if (basePath) {
       // Remove leading slash from basePath if present
       const cleanBasePath = basePath.startsWith('/') ? basePath.slice(1) : basePath;
       return `${PREFIX}${cleanBasePath}/${detailedDescription}`;
     }
-    
+
     // Fallback: try with PREFIX
     return `${PREFIX}${detailedDescription}`;
   };
@@ -57,15 +82,15 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
   // Calculate dynamic width based on content
   const dynamicWidth = useMemo(() => {
     if (!badge) return 420;
-    
+
     const hasDetailedContent = badge.detailedDescription && content && content.length > 0;
     const contentLength = content?.length || 0;
     const descriptionLength = badge.description?.length || 0;
     const topicsCount = badge.topics?.length || 0;
-    
+
     // Base width for minimal content
     let width = 360;
-    
+
     // Adjust based on content complexity
     if (hasDetailedContent) {
       if (contentLength > 2000) width = 520; // Very long content
@@ -79,11 +104,11 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
     } else {
       width = 380; // Short description
     }
-    
+
     // Adjust for many topics
     if (topicsCount > 6) width += 20;
     else if (topicsCount > 3) width += 10;
-    
+
     // Ensure minimum and maximum bounds
     return Math.max(360, Math.min(width, 600));
   }, [badge, content]);
@@ -151,15 +176,15 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
         },
       }}
     >
-      <Box 
-        sx={{ 
-          width: '100%', 
-          p: isExtensiveContent ? 4 : 3.5, 
-          position: 'relative', 
-          minHeight: '100vh', 
-          boxSizing: 'border-box', 
-          display: 'flex', 
-          flexDirection: 'column', 
+      <Box
+        sx={{
+          width: '100%',
+          p: isExtensiveContent ? 4 : 3.5,
+          position: 'relative',
+          minHeight: '100vh',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
           height: '100%',
           background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 50%, rgba(241, 245, 249, 0.95) 100%)',
           '&::before': {
@@ -174,17 +199,17 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
         }}
       >
         {/* Header with close button */}
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'flex-start', 
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
           mb: isExtensiveContent ? 3 : 2.5,
           flexShrink: 0,
         }}>
-          <Typography 
-            variant="h5" 
-            sx={{ 
-              fontWeight: 700, 
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: 700,
               color: '#1a1a1a',
               fontSize: isExtensiveContent ? '1.7rem' : '1.6rem',
               lineHeight: 1.2,
@@ -199,9 +224,9 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
           >
             {badge?.label}
           </Typography>
-          <IconButton 
-            onClick={onClose} 
-            sx={{ 
+          <IconButton
+            onClick={onClose}
+            sx={{
               color: '#64748b',
               backgroundColor: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(8px)',
@@ -214,20 +239,71 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
               },
               transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-            }} 
+            }}
             aria-label="Close"
           >
             <CloseIcon fontSize="medium" />
           </IconButton>
         </Box>
 
+        {/* Metadata section */}
+        {badge && (
+          <Box sx={{
+            mb: 2,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 0.5,
+            alignItems: 'center'
+          }}>
+            <Chip
+              label={badge.intent}
+              size="small"
+              sx={{
+                backgroundColor: '#f1f5f9',
+                color: '#475569',
+                fontWeight: 500,
+                fontSize: '0.7rem',
+                height: '20px',
+                '& .MuiChip-label': { px: 1 },
+              }}
+            />
+            <Chip
+              label={badge.type}
+              size="small"
+              sx={{
+                backgroundColor: '#fef3c7',
+                color: '#92400e',
+                fontWeight: 500,
+                fontSize: '0.7rem',
+                height: '20px',
+                '& .MuiChip-label': { px: 1 },
+              }}
+            />
+            {badge.topics && badge.topics.length > 0 && badge.topics.map((topic: string, idx: number) => (
+              <Chip
+                key={idx}
+                label={`#${topic}`}
+                size="small"
+                sx={{
+                  backgroundColor: '#dbeafe',
+                  color: '#1e40af',
+                  fontWeight: 400,
+                  fontSize: '0.65rem',
+                  height: '18px',
+                  '& .MuiChip-label': { px: 0.8 },
+                }}
+              />
+            ))}
+          </Box>
+        )}
+
         {/* Content area */}
-        <Box sx={{ 
-          flex: 1, 
-          mb: isExtensiveContent ? 3 : 2.5, 
-          fontSize: isExtensiveContent ? '1rem' : '0.95rem', 
-          color: '#374151', 
-          lineHeight: 1.6, 
+        <Box sx={{
+          flex: 1,
+          mb: isExtensiveContent ? 3 : 2.5,
+          fontSize: isExtensiveContent ? '1rem' : '0.95rem',
+          color: '#374151',
+          lineHeight: 1.6,
           overflow: 'auto',
           '&::-webkit-scrollbar': {
             width: '6px',
@@ -246,9 +322,9 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
         }}>
           {badge?.detailedDescription ? (
             loading ? (
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
                 justifyContent: 'center',
                 py: 4,
                 color: '#6b7280',
@@ -262,15 +338,15 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
               </Typography>
             ) : (
               <Box sx={{
-                '& p': { 
-                  mb: isExtensiveContent ? 2 : 1.5, 
+                '& p': {
+                  mb: isExtensiveContent ? 2 : 1.5,
                   fontSize: isExtensiveContent ? '1rem' : '0.95rem',
                   maxWidth: '100%',
                   wordWrap: 'break-word',
                 },
-                '& h1, & h2, & h3': { 
-                  color: '#1f2937', 
-                  fontWeight: 600, 
+                '& h1, & h2, & h3': {
+                  color: '#1f2937',
+                  fontWeight: 600,
                   mb: isExtensiveContent ? 1.5 : 1,
                   mt: isExtensiveContent ? 3 : 2,
                   wordWrap: 'break-word',
@@ -278,22 +354,22 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
                 '& h1': { fontSize: isExtensiveContent ? '1.4rem' : '1.25rem' },
                 '& h2': { fontSize: isExtensiveContent ? '1.2rem' : '1.1rem' },
                 '& h3': { fontSize: isExtensiveContent ? '1.1rem' : '1rem' },
-                '& ul, & ol': { 
-                  pl: isExtensiveContent ? 3 : 2, 
+                '& ul, & ol': {
+                  pl: isExtensiveContent ? 3 : 2,
                   mb: isExtensiveContent ? 2 : 1.5,
                   wordWrap: 'break-word',
                 },
                 '& li': { mb: isExtensiveContent ? 0.8 : 0.5 },
-                '& code': { 
-                  backgroundColor: '#f3f4f6', 
-                  padding: '2px 4px', 
+                '& code': {
+                  backgroundColor: '#f3f4f6',
+                  padding: '2px 4px',
                   borderRadius: '3px',
                   fontSize: isExtensiveContent ? '0.9rem' : '0.85rem',
                   wordBreak: 'break-all',
                 },
-                '& pre': { 
-                  backgroundColor: '#f9fafb', 
-                  padding: isExtensiveContent ? '16px' : '12px', 
+                '& pre': {
+                  backgroundColor: '#f9fafb',
+                  padding: isExtensiveContent ? '16px' : '12px',
                   borderRadius: '6px',
                   overflow: 'auto',
                   border: '1px solid #e5e7eb',
@@ -344,11 +420,11 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
                       </TableRow>
                     ),
                     th: ({ children, align, ...props }) => (
-                      <TableCell 
-                        {...props} 
-                        component="th" 
+                      <TableCell
+                        {...props}
+                        component="th"
                         align={align === 'center' ? 'center' : align === 'right' ? 'right' : 'left'}
-                        sx={{ 
+                        sx={{
                           border: '1px solid #e5e7eb',
                           padding: '8px 12px',
                           backgroundColor: '#f9fafb',
@@ -359,10 +435,10 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
                       </TableCell>
                     ),
                     td: ({ children, align, ...props }) => (
-                      <TableCell 
-                        {...props} 
+                      <TableCell
+                        {...props}
                         align={align === 'center' ? 'center' : align === 'right' ? 'right' : 'left'}
-                        sx={{ 
+                        sx={{
                           border: '1px solid #e5e7eb',
                           padding: '8px 12px',
                         }}
@@ -377,9 +453,9 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
               </Box>
             )
           ) : (
-            <Typography 
-              variant="body1" 
-              sx={{ 
+            <Typography
+              variant="body1"
+              sx={{
                 color: '#4b5563',
                 fontSize: isExtensiveContent ? '1rem' : '0.95rem',
                 lineHeight: 1.6,
@@ -391,68 +467,32 @@ const BadgeInfoDrawer: React.FC<BadgeInfoDrawerProps> = ({ badge, open, onClose,
           )}
         </Box>
 
-        {/* Compact metadata section */}
+        {/* AI-related badges */}
         {badge && (
-          <Box sx={{ 
+          <Box sx={{
             mt: 'auto',
             pt: isExtensiveContent ? 3 : 2.5,
             borderTop: '1px solid rgba(0, 0, 0, 0.08)',
-            background: 'linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.8) 100%)',
-            borderRadius: '12px',
-            p: isExtensiveContent ? 3 : 2.5,
-            border: '1px solid rgba(255, 255, 255, 0.6)',
-            backdropFilter: 'blur(8px)',
-            flexShrink: 0,
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: 1
           }}>
-            <Box sx={{ display: 'flex', gap: 1.5, mb: 1.5, flexWrap: 'wrap' }}>
-              <Chip
-                label={badge.intent}
-                size="small"
-                sx={{
-                  backgroundColor: 'rgba(241, 245, 249, 0.8)',
-                  color: '#475569',
-                  fontWeight: 500,
-                  fontSize: '0.75rem',
-                  height: '26px',
-                  '& .MuiChip-label': { px: 1.5 },
-                  border: '1px solid rgba(255, 255, 255, 0.6)',
-                }}
-              />
-              <Chip
-                label={badge.type}
-                size="small"
-                sx={{
-                  backgroundColor: 'rgba(254, 243, 199, 0.8)',
-                  color: '#92400e',
-                  fontWeight: 500,
-                  fontSize: '0.75rem',
-                  height: '26px',
-                  '& .MuiChip-label': { px: 1.5 },
-                  border: '1px solid rgba(255, 255, 255, 0.6)',
-                }}
-              />
-            </Box>
-            
-            {badge.topics && badge.topics.length > 0 && (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                {badge.topics.map((topic: string, idx: number) => (
-                  <Chip
-                    key={idx}
-                    label={`#${topic}`}
-                    size="small"
-                    sx={{
-                      backgroundColor: 'rgba(59, 130, 246, 0.12)',
-                      color: '#1e40af',
-                      fontWeight: 400,
-                      fontSize: '0.7rem',
-                      height: '22px',
-                      '& .MuiChip-label': { px: 1 },
-                      border: '1px solid rgba(59, 130, 246, 0.2)',
-                    }}
-                  />
-                ))}
-              </Box>
-            )}
+            <BinaryBadge
+              badge={AI_TRANSPARENCY_BADGES["ai-derived-insight"]}
+              size="medium"
+              variant="outlined"
+              chipColor="warning"
+              leftIconKey="iconIntent"
+              rightIconKey=""
+            />
+            <BinaryBadge
+              badge={AI_TRANSPARENCY_BADGES["human-verified-ai"]}
+              size="medium"
+              variant="outlined"
+              chipColor="success"
+              leftIconKey="iconIntent"
+              rightIconKey=""
+            />
           </Box>
         )}
       </Box>
