@@ -77,14 +77,14 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   }, [detailedInformation]);
 
   const handleBadgeClick = (badge: BadgeData, coordinates?: [number, number]) => {
-    // Track the badge click
-    trackBadgeClick(badge.id, badge.label, coordinates);
-    
     setSelectedBadge(badge);
     setIsDrawerOpen(true);
     
+    // Track the click with enhanced data
+    trackBadgeClick(badge.id, badge.label, coordinates, badge);
+    
     // Track drawer open
-    trackDrawerOpen(badge.id, badge.label);
+    trackDrawerOpen(badge.id, badge.label, badge);
   };
 
   // Extract base path from detailedInformation for relative markdown links
@@ -130,20 +130,55 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       setAnswer({
         status: true,
         answers: {
-          badgeStats: JSON.stringify(simplifiedData.badgeStats),
+          badgeStats: simplifiedData.badgeStats as any,
           totalBadgeClicks: simplifiedData.totalClicks,
           totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
-          // Add comprehensive tracking data
-          badgeTrackingData: JSON.stringify(comprehensiveData),
-          badgeInteractions: JSON.stringify(comprehensiveData.interactions),
-          badgeClickCounts: JSON.stringify(comprehensiveData.clickCounts),
+          // Add comprehensive tracking data as proper objects
+          badgeTrackingData: comprehensiveData as any,
+          badgeInteractions: comprehensiveData.badgeInteractions as any,
+          badgeClickCounts: comprehensiveData.clickCounts as any,
           totalTimeOnBadges: comprehensiveData.summary.totalTimeOnBadges,
-          // Add summary statistics
-          badgeTrackingSummary: JSON.stringify(comprehensiveData.summary),
+          // Add summary statistics as proper object
+          badgeTrackingSummary: comprehensiveData.summary as any,
+          // Always include all available badges as proper object
+          availableBadges: badges.map(badge => ({
+            id: badge.id,
+            label: badge.label,
+            description: badge.description,
+            type: badge.type,
+            badgeType: badge.badgeType,
+            intent: badge.intent,
+            topics: badge.topics,
+            link: badge.link,
+            avatar: badge.avatar,
+            badgeName: badge.badgeName,
+            descriptionPath: badge.descriptionPath,
+            detailedDescription: badge.detailedDescription,
+            // Add tooltip and drawer interaction tracking
+            hasTooltip: true,
+            hasDrawer: true,
+            tooltipContent: badge.description,
+            drawerContent: badge.detailedDescription || badge.description,
+            // Add categorization for analysis
+            category: badge.type,
+            subcategory: badge.badgeType,
+            tags: badge.topics,
+            // Add metadata for analysis
+            isInteractive: true,
+            canBeClicked: true,
+            canBeHovered: true,
+            hasDetailedInfo: !!badge.detailedDescription,
+            hasExternalLink: !!badge.link,
+            // Add positioning info if available
+            position: {
+              row: 'bottom',
+              order: badges.indexOf(badge)
+            }
+          })) as any,
         },
       });
     };
-  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer]);
+  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer, badges]);
 
   // Also save tracking data periodically to ensure we don't lose data
   useEffect(() => {
@@ -151,28 +186,61 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
       const simplifiedData = getSimplifiedTrackingData();
       const comprehensiveData = getComprehensiveTrackingData();
       
-      // Only save if there's actual tracking data
-      if (simplifiedData.totalClicks > 0 || simplifiedData.totalTimeSpent > 0) {
-        setAnswer({
-          status: true,
-          answers: {
-            badgeStats: JSON.stringify(simplifiedData.badgeStats),
-            totalBadgeClicks: simplifiedData.totalClicks,
-            totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
-            // Add comprehensive tracking data
-            badgeTrackingData: JSON.stringify(comprehensiveData),
-            badgeInteractions: JSON.stringify(comprehensiveData.interactions),
-            badgeClickCounts: JSON.stringify(comprehensiveData.clickCounts),
-            totalTimeOnBadges: comprehensiveData.summary.totalTimeOnBadges,
-            // Add summary statistics
-            badgeTrackingSummary: JSON.stringify(comprehensiveData.summary),
-          },
-        });
-      }
+      // Always save tracking data, regardless of interactions
+      setAnswer({
+        status: true,
+        answers: {
+          badgeStats: simplifiedData.badgeStats as any,
+          totalBadgeClicks: simplifiedData.totalClicks,
+          totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
+          // Add comprehensive tracking data as proper objects
+          badgeTrackingData: comprehensiveData as any,
+          badgeInteractions: comprehensiveData.badgeInteractions as any,
+          badgeClickCounts: comprehensiveData.clickCounts as any,
+          totalTimeOnBadges: comprehensiveData.summary.totalTimeOnBadges,
+          // Add summary statistics as proper object
+          badgeTrackingSummary: comprehensiveData.summary as any,
+          // Always include all available badges as proper object
+          availableBadges: badges.map(badge => ({
+            id: badge.id,
+            label: badge.label,
+            description: badge.description,
+            type: badge.type,
+            badgeType: badge.badgeType,
+            intent: badge.intent,
+            topics: badge.topics,
+            link: badge.link,
+            avatar: badge.avatar,
+            badgeName: badge.badgeName,
+            descriptionPath: badge.descriptionPath,
+            detailedDescription: badge.detailedDescription,
+            // Add tooltip and drawer interaction tracking
+            hasTooltip: true,
+            hasDrawer: true,
+            tooltipContent: badge.description,
+            drawerContent: badge.detailedDescription || badge.description,
+            // Add categorization for analysis
+            category: badge.type,
+            subcategory: badge.badgeType,
+            tags: badge.topics,
+            // Add metadata for analysis
+            isInteractive: true,
+            canBeClicked: true,
+            canBeHovered: true,
+            hasDetailedInfo: !!badge.detailedDescription,
+            hasExternalLink: !!badge.link,
+            // Add positioning info if available
+            position: {
+              row: 'bottom',
+              order: badges.indexOf(badge)
+            }
+          })) as any,
+        },
+      });
     }, 5000); // Save every 5 seconds
 
     return () => clearInterval(interval);
-  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer]);
+  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer, badges]);
 
   return (
     <Box sx={{ position: 'relative', display: 'inline-block' }}>
@@ -194,8 +262,14 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
         badges={badges} 
         onBadgeClick={handleBadgeClick} 
         selectedBadgeId={selectedBadge?.id || null}
-        onBadgeHoverStart={trackHoverStart}
-        onBadgeHoverEnd={trackHoverEnd}
+        onBadgeHoverStart={(badgeId, badgeLabel) => {
+          const badge = badges.find(b => b.id === badgeId);
+          trackHoverStart(badgeId, badgeLabel, badge);
+        }}
+        onBadgeHoverEnd={(badgeId, badgeLabel) => {
+          const badge = badges.find(b => b.id === badgeId);
+          trackHoverEnd(badgeId, badgeLabel, badge);
+        }}
       />
 
       {/* Badge Information Panel */}
@@ -204,7 +278,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
         open={isDrawerOpen}
         onClose={() => {
           if (selectedBadge) {
-            trackDrawerClose(selectedBadge.id, selectedBadge.label);
+            trackDrawerClose(selectedBadge.id, selectedBadge.label, selectedBadge);
           }
           setIsDrawerOpen(false);
         }}
