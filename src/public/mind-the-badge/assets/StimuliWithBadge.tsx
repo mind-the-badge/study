@@ -35,6 +35,7 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
     trackDrawerClose,
     getTrackingData,
     getSimplifiedTrackingData,
+    getComprehensiveTrackingData,
   } = useBadgeTracking();
 
   // Load badge data from JSON file
@@ -123,6 +124,34 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
   useEffect(() => {
     return () => {
       const simplifiedData = getSimplifiedTrackingData();
+      const comprehensiveData = getComprehensiveTrackingData();
+      
+      // Always save tracking data, even if no interactions occurred
+      setAnswer({
+        status: true,
+        answers: {
+          badgeStats: JSON.stringify(simplifiedData.badgeStats),
+          totalBadgeClicks: simplifiedData.totalClicks,
+          totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
+          // Add comprehensive tracking data
+          badgeTrackingData: JSON.stringify(comprehensiveData),
+          badgeInteractions: JSON.stringify(comprehensiveData.interactions),
+          badgeClickCounts: JSON.stringify(comprehensiveData.clickCounts),
+          totalTimeOnBadges: comprehensiveData.summary.totalTimeOnBadges,
+          // Add summary statistics
+          badgeTrackingSummary: JSON.stringify(comprehensiveData.summary),
+        },
+      });
+    };
+  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer]);
+
+  // Also save tracking data periodically to ensure we don't lose data
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const simplifiedData = getSimplifiedTrackingData();
+      const comprehensiveData = getComprehensiveTrackingData();
+      
+      // Only save if there's actual tracking data
       if (simplifiedData.totalClicks > 0 || simplifiedData.totalTimeSpent > 0) {
         setAnswer({
           status: true,
@@ -130,11 +159,20 @@ const StimuliWithBadge: React.FC<StimulusParams<BadgeStimulusParams>> = ({ param
             badgeStats: JSON.stringify(simplifiedData.badgeStats),
             totalBadgeClicks: simplifiedData.totalClicks,
             totalBadgeTimeSpent: simplifiedData.totalTimeSpent,
+            // Add comprehensive tracking data
+            badgeTrackingData: JSON.stringify(comprehensiveData),
+            badgeInteractions: JSON.stringify(comprehensiveData.interactions),
+            badgeClickCounts: JSON.stringify(comprehensiveData.clickCounts),
+            totalTimeOnBadges: comprehensiveData.summary.totalTimeOnBadges,
+            // Add summary statistics
+            badgeTrackingSummary: JSON.stringify(comprehensiveData.summary),
           },
         });
       }
-    };
-  }, [getSimplifiedTrackingData, setAnswer]);
+    }, 5000); // Save every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [getSimplifiedTrackingData, getComprehensiveTrackingData, setAnswer]);
 
   return (
     <Box sx={{ position: 'relative', display: 'inline-block' }}>

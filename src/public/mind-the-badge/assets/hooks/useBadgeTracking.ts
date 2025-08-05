@@ -147,12 +147,12 @@ export function useBadgeTracking() {
     }
   }, []);
 
-  // Get tracking data
-  const getTrackingData = useCallback(() => {
+  // Get full tracking data
+  const getTrackingData = useCallback((): BadgeTrackingData => {
     return {
-      ...trackingData.current,
       interactions: [...trackingData.current.interactions],
       hoverStartTimes: { ...trackingData.current.hoverStartTimes },
+      totalTimeOnBadges: trackingData.current.totalTimeOnBadges,
       badgeClickCounts: { ...trackingData.current.badgeClickCounts },
       drawerOpenTimes: { ...trackingData.current.drawerOpenTimes },
     };
@@ -223,6 +223,33 @@ export function useBadgeTracking() {
     };
   }, []);
 
+  // Get comprehensive tracking data for JSON export
+  const getComprehensiveTrackingData = useCallback(() => {
+    const simplifiedData = getSimplifiedTrackingData();
+    const fullData = getTrackingData();
+    
+    return {
+      // Summary statistics
+      summary: {
+        totalInteractions: fullData.interactions.length,
+        totalClicks: simplifiedData.totalClicks,
+        totalTimeSpent: simplifiedData.totalTimeSpent,
+        totalTimeOnBadges: fullData.totalTimeOnBadges,
+        uniqueBadgesInteracted: Object.keys(fullData.badgeClickCounts).length,
+      },
+      // Detailed data
+      badgeStats: simplifiedData.badgeStats,
+      interactions: fullData.interactions,
+      clickCounts: fullData.badgeClickCounts,
+      hoverStartTimes: fullData.hoverStartTimes,
+      drawerOpenTimes: fullData.drawerOpenTimes,
+      // Timestamps for analysis
+      sessionStartTime: Date.now() - (fullData.interactions.length > 0 ? 
+        Math.min(...fullData.interactions.map(i => i.timestamp)) : Date.now()),
+      sessionEndTime: Date.now(),
+    };
+  }, [getSimplifiedTrackingData, getTrackingData]);
+
   // Reset tracking data
   const resetTracking = useCallback(() => {
     trackingData.current = {
@@ -256,6 +283,7 @@ export function useBadgeTracking() {
     trackDrawerClose,
     getTrackingData,
     getSimplifiedTrackingData,
+    getComprehensiveTrackingData,
     resetTracking,
   };
 } 
