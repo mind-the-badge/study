@@ -1,0 +1,81 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Data Source Disclosed",
+      "description": "ONS Annual Population Survey, 2012-15, ~165 k respondents, 0–10 well-being scale.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Source"],
+      "link": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/articles/measuringnationalwellbeing/atwhatageispersonalwellbeingthehighest",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-data-sources-disclosed.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "95% CI Error Bars",
+      "description": "Vertical lines show 95 % confidence intervals around each age-group mean.",
+      "type": "ANALYSIS",
+      "intent": "INFORMATION",
+      "topics": ["Uncertainty"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-95-ci-error-bars.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Truncated Axis",
+      "description": "Y-axes show only 6.8–8.2 (or 2.4–3.4 for anxiety), exaggerating differences.",
+      "type": "VISUAL ENCODING",
+      "intent": "WARNING",
+      "topics": ["Scale"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-truncated-axis.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Open Government Licence",
+      "description": "ONS outputs are OGL v3.0—free reuse with attribution encouraged.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["License"],
+      "link": "https://nationalarchives.gov.uk/doc/open-government-licence",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-open-government-licence.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Open Data",
+      "description": "Aggregated tables, micro-data and an API are openly available for download.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Access"],
+      "link": "https://ons.gov.uk/peoplepopulationandcommunity/wellbeing",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-open-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Uncertainty Visualised",
+      "description": "Sampling variability is explicit; overlapping CIs may indicate no real difference.",
+      "type": "ANALYSIS",
+      "intent": "CONFIRMATION",
+      "topics": ["Uncertainty"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-uncertainty-visualised.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "Outdated Data",
+      "description": "Last data point is 2015; well-being patterns may have shifted since.",
+      "type": "DATA",
+      "intent": "WARNING",
+      "topics": ["Timeliness"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-outdated-data.md"
+    }
+  ]
+}

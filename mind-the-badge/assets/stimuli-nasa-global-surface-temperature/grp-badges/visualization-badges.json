@@ -1,0 +1,103 @@
+{
+  "badges": [
+    {
+      "badgeType": "BINARY",
+      "id": "1",
+      "label": "Data Source Disclosed",
+      "description": "Figure caption cites each primary source, allowing verification and re‑use.",
+      "type": "CONTEXT",
+      "intent": "CONFIRMATION",
+      "topics": ["Transparency"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-1-data-source-disclosed.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "2",
+      "label": "Open Data",
+      "description": "Underlying dataset (NASA GISTEMP, NOAA, HadCRUT) is openly available for download and verification.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Transparency"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-2-open-data.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "3",
+      "label": "Baseline Period",
+      "description": "Temperature anomalies are calculated relative to the 1850-1900 average, which serves as the pre-industrial baseline.",
+      "type": "DATA",
+      "intent": "INFORMATION",
+      "topics": ["Methodology"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-3-baseline-period.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "4",
+      "label": "Multiple Datasets",
+      "description": "Results are based on multiple independent temperature datasets to ensure robustness and reduce uncertainty.",
+      "type": "DATA",
+      "intent": "CONFIRMATION",
+      "topics": ["Reliability"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-4-multiple-datasets.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "5",
+      "label": "Global Coverage",
+      "description": "Data represents global surface temperature averages, combining land and ocean measurements worldwide.",
+      "type": "DATA",
+      "intent": "INFORMATION",
+      "topics": ["Scope"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-5-global-coverage.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "6",
+      "label": "Anomaly Calculation",
+      "description": "Shows temperature anomalies (departures from baseline) rather than absolute temperatures to highlight changes over time.",
+      "type": "ANALYSIS",
+      "intent": "INFORMATION",
+      "topics": ["Methodology"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-6-anomaly-calculation.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "7",
+      "label": "Recent Warming Trend",
+      "description": "Clear acceleration in warming since the 1980s, with the most recent years showing unprecedented temperature anomalies.",
+      "type": "ANALYSIS",
+      "intent": "WARNING",
+      "topics": ["Trends"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-7-recent-warming-trend.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "8",
+      "label": "Monthly Variability",
+      "description": "Monthly data shows natural seasonal variations, but recent years consistently exceed historical ranges.",
+      "type": "VISUAL ENCODING",
+      "intent": "INFORMATION",
+      "topics": ["Variability"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-8-monthly-variability.md"
+    },
+    {
+      "badgeType": "BINARY",
+      "id": "9",
+      "label": "Color-Coded Scale",
+      "description": "Color gradient from blue (cooler) to red (warmer) helps visualize the warming trend over time.",
+      "type": "VISUAL ENCODING",
+      "intent": "INFORMATION",
+      "topics": ["Encoding"],
+      "link": "",
+      "detailedDescription": "detailed-badge-descriptions/badge-9-color-coded-scale.md"
+    }
+  ]
+} 

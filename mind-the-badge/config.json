@@ -1,0 +1,510 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Experiment",
+    "version": "0.0.0",
+    "authors": [
+      "Valentin Edelsbrunner"
+    ],
+    "date": "2025-01-28",
+    "description": "A study examining visualization badges.",
+    "organizations": [
+      "inria"
+    ]
+  },
+  "uiConfig": {
+    "contactEmail": "contact@yourstudy.com",
+    "helpTextPath": "mind-the-badge/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": false,
+    "sidebar": true,
+    "studyEndMsg": "Thank you for participating!"
+  },
+  "importedLibraries": [
+    "demographics",
+    "sus"
+  ],
+  "baseComponents": {
+    "stimuliWithBadge": {
+      "description": "A visualization with badge overlay.",
+      "type": "react-component",
+      "path": "mind-the-badge/assets/StimuliWithBadge.tsx",
+      "nextButtonLocation": "sidebar",
+      "instructionLocation": "sidebar",
+      "response": []
+    }
+  },
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "mind-the-badge/assets/introduction.md",
+      "response": []
+    },
+    "consent": {
+      "type": "markdown",
+      "path": "mind-the-badge/assets/consent.md",
+      "response": []
+    },
+    "example": {
+      "type": "markdown",
+      "path": "mind-the-badge/assets/example.md",
+      "response": []
+    },
+    "1_badges-global-warming-by-gas-and-source": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**My Observations:**",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "1_footnotes-global-warming-by-gas-and-source": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-global-warming-by-gas-and-source/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "2_badges-well-being-by-age": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-well-being-by-age/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "2_footnotes-well-being-by-age": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-well-being-by-age/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "3_badges-co2-emissions-vs-gdp": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "3_footnotes-co2-emissions-vs-gdp": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-co2-emissions-vs-gdp/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "4_badges-nasa-global-surface-temperature": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "4_footnotes-nasa-global-surface-temperature": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-nasa-global-surface-temperature/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "5_badges-global-warming-projection": {
+      "baseComponent": "stimuliWithBadge",
+      "instruction": "Read the visualization carefully and write down any observations you make or questions you have.",
+      "parameters": {
+        "imageSrc": "mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/source.png",
+        "detailedInformation": "/mind-the-badge/assets/stimuli-global-warming-projection/grp-badges/visualization-badges.json"
+      },
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "5_footnotes-global-warming-projection": {
+      "type": "image",
+      "path": "mind-the-badge/assets/stimuli-global-warming-projection/grp-footnotes/source.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "main-observations",
+          "prompt": "**Your Tasks:** Describe main observations from the visualization",
+          "location": "sidebar",
+          "type": "longText",
+          "placeholder": "Please describe your main observations from the visualization...",
+          "minRows": 15,
+          "autosize": true,
+          "maxRows": 15
+        }
+      ]
+    },
+    "demographics-custom": {
+      "type": "questionnaire",
+      "description": "Demographic and background questions for visualization research study",
+      "response": [
+        {
+          "id": "gender",
+          "prompt": "What is your **gender**?",
+          "required": true,
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Woman",
+            "Man",
+            "Non-binary / Genderqueer / Third gender",
+            "Genderfluid / Gender non-conforming",
+            "Questioning",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "age",
+          "prompt": "What is your **age group**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "18-24 years",
+            "25-34 years",
+            "35-44 years",
+            "45-54 years",
+            "55-64 years",
+            "65+ years",
+            "Prefer not to say"
+          ]
+        },
+        {
+          "id": "education",
+          "prompt": "What is the **highest degree or level of education** you have completed?",
+          "required": true,
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Less than high school",
+            "High school diploma or equivalent",
+            "Some college (no degree)",
+            "Associate's degree",
+            "Bachelor's degree",
+            "Master's degree",
+            "Doctoral degree",
+            "Professional degree (MD, JD, etc.)"
+          ]
+        },
+        {
+          "id": "field-of-study",
+          "prompt": "What is your **primary field of study or work**?",
+          "required": true,
+          "type": "radio",
+          "withOther": true,
+          "options": [
+            "Computer Science / Information Technology",
+            "Data Science / Statistics",
+            "Business / Economics",
+            "Social Sciences (Psychology, Sociology, etc.)",
+            "Natural Sciences (Biology, Chemistry, Physics, etc.)",
+            "Engineering",
+            "Arts / Design",
+            "Humanities",
+            "Healthcare / Medicine",
+            "Education",
+            "Other"
+          ]
+        },
+        {
+          "id": "data-visualization-experience",
+          "prompt": "How would you rate your **experience with data visualization**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "No experience",
+            "Beginner (some exposure)",
+            "Intermediate (regular use)",
+            "Advanced (create visualizations)",
+            "Expert (professional work)"
+          ]
+        },
+        {
+          "id": "chart-reading-frequency",
+          "prompt": "How often do you **read or interpret charts and graphs**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "Never",
+            "Rarely (few times per year)",
+            "Occasionally (few times per month)",
+            "Regularly (few times per week)",
+            "Frequently (daily or almost daily)"
+          ]
+        },
+        {
+          "id": "chart-creation-frequency",
+          "prompt": "How often do you **create charts and graphs**?",
+          "required": true,
+          "type": "radio",
+          "options": [
+            "Never",
+            "Rarely (few times per year)",
+            "Occasionally (few times per month)",
+            "Regularly (few times per week)",
+            "Frequently (daily or almost daily)"
+          ]
+        },
+        {
+          "id": "color-vision",
+          "prompt": "Do you have any form of color‑vision deficiency (often called color‑blindness)?",
+          "required": false,
+          "type": "radio",
+          "options": [
+            "Yes",
+            "No",
+            "Not sure",
+            "Prefer not to say"
+          ]
+        }
+      ]
+    },
+    "sus-contextualized": {
+      "type": "questionnaire",
+      "description": "System Usability Scale contextualized for visualization badges",
+      "response": [
+        {
+          "id": "use-frequently",
+          "prompt": "I think that I would like to use **visualization badges** frequently",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "unnecessarily-complex",
+          "prompt": "I found **visualization badges** unnecessarily complex",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "easy-to-use",
+          "prompt": "I thought **visualization badges** were easy to use",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "need-technical-support",
+          "prompt": "I think that I would need the support of a technical person to be able to use **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "well-integrated",
+          "prompt": "I found the various functions in **visualization badges** were well integrated",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "too-inconsistent",
+          "prompt": "I thought there was too much inconsistency in **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "quick-to-learn",
+          "prompt": "I would imagine that most people would learn to use **visualization badges** very quickly",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "cumbersome-to-use",
+          "prompt": "I found **visualization badges** very cumbersome to use",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "confident-using",
+          "prompt": "I felt very confident using **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        },
+        {
+          "id": "needed-to-learn-lot",
+          "prompt": "I needed to learn a lot of things before I could get going with **visualization badges**",
+          "required": true,
+          "type": "likert",
+          "numItems": 5,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Strongly Disagree"
+        }
+      ]
+    },
+    "perceptual-footprint": {
+      "type": "questionnaire",
+      "description": "Perceptual Footprint – post-task survey",
+      "response": [
+        { "id": "noticed-in-task", "prompt": "Did you notice the small visual labels on the bottom right in some of the visualizations? ![badge examples](mind-the-badge/assets/badge-examples.png)", "type": "radio", "options": ["Yes", "No"], "required": true },
+
+        { "id": "salience-1", "prompt": "The visualization badges were easy to spot.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "salience-2", "prompt": "The visualization badges blended in so much that I almost missed them.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "clarity-1", "prompt": "I understood what each visualization badge was communicating.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "clarity-2", "prompt": "I was unsure what at least one visualization badge meant.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "effort-1", "prompt": "Interpreting the visualization badges required very little mental effort.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "effort-2", "prompt": "Figuring out the badges' meanings was mentally taxing.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "influence-1", "prompt": "The visualization badges helped me interpret the visualization correctly.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "influence-2", "prompt": "The visualization badges did not influence my conclusions.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "trust-1", "prompt": "Seeing the visualization badges increased my trust in the visualization.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "trust-2", "prompt": "The visualization badges made me question the reliability of the visualization.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "confidence-1", "prompt": "Because of the visualization badges, I felt more confident about my conclusions.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "aesthetic-1", "prompt": "The visualization badges fit well with the overall design.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "aesthetic-2", "prompt": "The visualization badges cluttered or distracted from the main chart.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+
+        { "id": "engage-1", "prompt": "The visualization badges motivated me to explore the visualization further (e.g., hover, click).", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true },
+        { "id": "future-1", "prompt": "I would like to see visualization badges in other visualizations.", "type": "likert", "numItems": 5, "leftLabel": "Strongly Disagree", "rightLabel": "Strongly Agree", "required": true }
+      ]
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "consent",
+      "example",
+      "1_badges-global-warming-by-gas-and-source",
+      "1_footnotes-global-warming-by-gas-and-source",
+      "2_badges-well-being-by-age",
+      "2_footnotes-well-being-by-age",
+      "3_badges-co2-emissions-vs-gdp",
+      "3_footnotes-co2-emissions-vs-gdp",
+      "4_badges-nasa-global-surface-temperature",
+      "4_footnotes-nasa-global-surface-temperature",
+      "5_badges-global-warming-projection",
+      "5_footnotes-global-warming-projection",
+      "demographics-custom",
+      "perceptual-footprint",
+      "sus-contextualized"
+    ]
+  }
+}
